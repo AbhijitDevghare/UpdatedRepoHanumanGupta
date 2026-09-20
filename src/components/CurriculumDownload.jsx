@@ -1,0 +1,5 @@
+import { ArrowDownToLine } from "lucide-react";
+
+export default function CurriculumDownload({ course }) {
+  return <section className="flex flex-col items-start justify-between gap-5 rounded-2xl border border-blue-100 bg-blue-50/60 p-7 sm:flex-row sm:items-center"><div><span className="text-xs font-mono font-bold uppercase tracking-wider text-brand-blue">Course resource</span><h2 className="mt-2 text-2xl font-extrabold text-brand-navy">Download Course Curriculum</h2><p className="mt-2 max-w-2xl text-sm leading-relaxed text-slate-600">Download the complete course curriculum and review the detailed modules and topics before enrolling.</p></div>{course.curriculumPdf ? <a href={course.curriculumPdf} download className="inline-flex shrink-0 items-center rounded-lg bg-brand-navy px-5 py-3 text-sm font-semibold text-white hover:bg-brand-blue"><ArrowDownToLine size={17} className="mr-2" />Download Curriculum PDF</a> : <span className="shrink-0 text-sm font-semibold text-brand-darkblue">Curriculum PDF coming soon</span>}</section>;
+}
