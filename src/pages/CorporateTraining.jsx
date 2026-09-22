@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
+  Check,
   Cloud,
-  Code2,
+  Layers3,
   Network,
   Server,
   Terminal,
@@ -11,352 +12,463 @@ import {
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-/* =========================================================
-   COMPANY LOGOS
-   Change filenames only if your actual filenames are different
-   ========================================================= */
-
-import dxcLogo from "../assets/dxc.jpeg";
-import capgeminiLogo from "../assets/capegemini.jpeg";
-import hcltechLogo from "../assets/hcltecg.png";
-import kpmgLogo from "../assets/kpmg.png";
-import btLogo from "../assets/btgroup.png";
-import techMahindraLogo from "../assets/techmahindra.jpeg";
-import persistentLogo from "../assets/persistent.avif";
-import ltimindtreeLogo from "../assets/LTIMindtree.png";
-import wiproLogo from "../assets/Wipro.jpeg";
-import gdLogo from "../assets/Giesecke+Devrient.png";
-
+import Hero1 from "../assets/labs/hero1.png";
 
 /* =========================================================
-   ORGANIZATIONS
-   ========================================================= */
+   LAB DATA
+========================================================= */
 
-const organizations = [
+const labs = [
   {
-    name: "DXC Technology",
-    logo: dxcLogo,
-  },
-  {
-    name: "Capgemini",
-    logo: capgeminiLogo,
-  },
-  {
-    name: "HCLTech",
-    logo: hcltechLogo,
-  },
-  {
-    name: "KPMG",
-    logo: kpmgLogo,
-  },
-  {
-    name: "BT Group",
-    logo: btLogo,
-  },
-  {
-    name: "Tech Mahindra",
-    logo: techMahindraLogo,
-  },
-  {
-    name: "Persistent Systems",
-    logo: persistentLogo,
-  },
-  {
-    name: "LTIMindtree",
-    logo: ltimindtreeLogo,
-  },
-  {
-    name: "Wipro",
-    logo: wiproLogo,
-  },
-  {
-    name: "Giesecke+Devrient",
-    logo: gdLogo,
-  },
-];
-
-
-/* =========================================================
-   TRAINING AREAS
-   ========================================================= */
-
-const trainingAreas = [
-  {
-    title: "Networking",
+    name: "Networking",
     icon: Network,
+    topics: ["CCNA / CCNP", "VLANs", "Routing", "OSPF", "EIGRP", "ACL", "NAT"],
   },
   {
-    title: "Cloud Computing",
-    icon: Cloud,
-  },
-  {
-    title: "VMware & Virtualization",
-    icon: Server,
-  },
-  {
-    title: "Linux",
+    name: "Linux",
     icon: Terminal,
+    topics: [
+      "Linux CLI",
+      "File Management",
+      "Users & Permissions",
+      "Services",
+      "Networking",
+      "Troubleshooting",
+    ],
   },
   {
-    title: "Windows Server",
+    name: "Windows Server",
     icon: Server,
+    topics: [
+      "Active Directory",
+      "DNS",
+      "DHCP",
+      "Group Policy",
+      "PowerShell",
+      "Server Administration",
+    ],
   },
   {
-    title: "Automation",
-    icon: Code2,
+    name: "VMware",
+    icon: Layers3,
+    topics: [
+      "vSphere",
+      "ESXi",
+      "vCenter",
+      "Virtual Machines",
+      "Networking",
+      "Troubleshooting",
+    ],
+  },
+  {
+    name: "Cloud",
+    icon: Cloud,
+    topics: [
+      "AWS",
+      "Azure",
+      "VPC",
+      "Virtual Networks",
+      "IAM",
+      "Cloud Infrastructure",
+    ],
   },
 ];
 
-
 /* =========================================================
-   COMPANY CARD
-   ========================================================= */
+   LAB CARD
+========================================================= */
 
-function CompanyCard({ organization }) {
+function LabCard({ lab }) {
+  const Icon = lab.icon;
+
   return (
-    <div className="group flex h-28 items-center justify-center rounded-xl border border-slate-200 bg-white px-5 transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-md">
-      <img
-        src={organization.logo}
-        alt={`${organization.name} logo`}
-        className="max-h-14 max-w-[170px] w-auto object-contain transition-transform duration-300 group-hover:scale-105"
-      />
-    </div>
+    <article className="group border-b border-blue-100 p-6 transition hover:bg-blue-50/30">
+
+      <div className="flex items-center gap-4">
+
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-blue-100 text-blue-600 transition group-hover:bg-blue-600 group-hover:text-white">
+          <Icon size={21} />
+        </div>
+
+        <h3 className="text-lg font-bold text-slate-950">
+          {lab.name}
+        </h3>
+
+      </div>
+
+      <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2">
+
+        {lab.topics.map((topic) => (
+          <span
+            key={topic}
+            className="text-sm text-slate-600"
+          >
+            {topic}
+          </span>
+        ))}
+
+      </div>
+
+    </article>
   );
 }
 
-
 /* =========================================================
-   MAIN COMPONENT
-   ========================================================= */
+   PAGE
+========================================================= */
 
-export default function CorporateTraining() {
+export default function ITLabs() {
   return (
     <>
       <Navbar />
 
-      <main className="bg-white">
+      <main className="overflow-hidden bg-white text-slate-900">
 
         {/* =================================================
-            SIMPLE INTRO
+            HERO
         ================================================= */}
 
-        <section className="border-b border-slate-200 py-20">
-          <div className="mx-auto max-w-6xl px-4 text-center sm:px-6 lg:px-8">
+        <section className="border-b border-blue-100 bg-white">
 
-            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">
-              Corporate Training
-            </span>
+          <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
 
-            <h1 className="mx-auto mt-4 max-w-3xl text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-              Technical Training for Modern IT Teams
-            </h1>
+            <div className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
 
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-600">
-              Practical, instructor-led training across infrastructure,
-              networking, cloud, virtualization, and enterprise technologies.
-            </p>
+              {/* TEXT */}
 
-            <div className="mt-7">
-              <Link
-                to="/contact?type=corporate-training"
-                className="inline-flex items-center rounded-lg bg-brand-blue px-5 py-3 text-sm font-semibold text-white transition hover:bg-blue-700"
-              >
-                Request Corporate Training
-                <ArrowRight size={16} className="ml-2" />
-              </Link>
+              <div>
+
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">
+                  Virtual IT Labs
+                </p>
+
+                <h1 className="mt-5 text-4xl font-bold leading-tight tracking-tight text-slate-950 sm:text-5xl">
+                  Train. Practice.
+                  <span className="block text-blue-700">
+                    Build confidence.
+                  </span>
+                </h1>
+
+                <p className="mt-6 max-w-xl text-base leading-8 text-slate-600 sm:text-lg">
+                  Give employees a safe environment to configure, test and
+                  troubleshoot real IT technologies before working on
+                  production systems.
+                </p>
+
+                <p className="mt-4 max-w-xl text-sm leading-7 text-slate-500 sm:text-base">
+                  Use virtual labs alongside instructor-led training for
+                  employee upskilling, onboarding and technical practice.
+                </p>
+
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+
+                  <Link
+                    to="/contact?type=lab-access"
+                    className="inline-flex items-center justify-center rounded-lg bg-brand-navy px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-brand-blue"
+                  >
+                    Request Lab Access
+                    <ArrowRight size={17} className="ml-2" />
+                  </Link>
+
+                  <Link
+                    to="/contact?type=custom-lab"
+                    className="inline-flex items-center justify-center rounded-lg border border-blue-200 px-6 py-3.5 text-sm font-semibold text-blue-700 transition hover:bg-blue-50"
+                  >
+                    Build a Custom Lab
+                  </Link>
+
+                </div>
+
+              </div>
+
+              {/* ONLY IMAGE */}
+
+              <div className="overflow-hidden rounded-2xl border border-blue-100 shadow-xl">
+
+                <img
+                  src={Hero1}
+                  alt="Virtual IT lab environment"
+                  className="h-[320px] w-full object-cover sm:h-[400px] lg:h-[450px]"
+                />
+
+              </div>
+
             </div>
 
           </div>
+
         </section>
 
-
         {/* =================================================
-            ORGANIZATIONS
+            WHY COMPANIES NEED IT
         ================================================= */}
 
-        <section className="border-b border-slate-200 py-16">
+        <section className="border-b border-blue-100 bg-white py-16 sm:py-20">
+
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
 
-            <div className="text-center">
+            <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
 
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">
-                Training Experience
-              </span>
+              <div>
 
-              <h2 className="mt-3 text-2xl font-bold text-slate-900 sm:text-3xl">
-                Organizations We Have Trained
-              </h2>
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">
+                  Why Virtual Labs
+                </p>
 
-              <p className="mx-auto mt-3 max-w-xl text-sm text-slate-500">
-                Training experience across leading IT services,
-                consulting, telecommunications, and technology organizations.
-              </p>
+                <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+                  Let employees practice before production
+                </h2>
+
+              </div>
+
+              <div className="space-y-5 text-sm leading-7 text-slate-600 sm:text-base">
+
+                <p>
+                  Classroom training explains the technology. A lab lets
+                  employees actually configure it, make mistakes and
+                  troubleshoot problems without affecting production systems.
+                </p>
+
+                <p>
+                  Companies can use the same environment for onboarding,
+                  upskilling, technology adoption, certification preparation
+                  and hands-on technical workshops.
+                </p>
+
+              </div>
 
             </div>
 
+          </div>
 
-            <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+        </section>
 
-              {organizations.map((organization) => (
-                <CompanyCard
-                  key={organization.name}
-                  organization={organization}
-                />
+        {/* =================================================
+            HOW COMPANIES USE IT
+        ================================================= */}
+
+        <section className="bg-white py-16 sm:py-20">
+
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+
+            <div className="mb-10">
+
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">
+                For Organizations
+              </p>
+
+              <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+                One lab, multiple training needs
+              </h2>
+
+            </div>
+
+            <div className="grid border-y border-blue-100 sm:grid-cols-2 lg:grid-cols-4">
+
+              {[
+                {
+                  title: "Onboarding",
+                  text: "Help new employees gain practical experience with your technology stack.",
+                },
+                {
+                  title: "Upskilling",
+                  text: "Give existing IT teams hands-on practice with new technologies.",
+                },
+                {
+                  title: "Troubleshooting",
+                  text: "Create real technical problems and let employees learn how to solve them.",
+                },
+                {
+                  title: "New Technology",
+                  text: "Let teams practice new platforms before using them in production.",
+                },
+              ].map((item, index) => (
+                <div
+                  key={item.title}
+                  className={`
+                    p-6
+                    ${index !== 0 ? "border-t sm:border-l sm:border-t-0" : ""}
+                    ${index === 2 ? "lg:border-l" : ""}
+                  `}
+                >
+
+                  <div className="flex items-start gap-3">
+
+                    <Check
+                      size={18}
+                      className="mt-0.5 shrink-0 text-blue-600"
+                    />
+
+                    <div>
+
+                      <h3 className="font-bold text-slate-950">
+                        {item.title}
+                      </h3>
+
+                      <p className="mt-2 text-sm leading-6 text-slate-600">
+                        {item.text}
+                      </p>
+
+                    </div>
+
+                  </div>
+
+                </div>
               ))}
 
             </div>
 
           </div>
+
         </section>
 
-
         {/* =================================================
-            TRAINING AREAS
+            LAB ENVIRONMENTS
         ================================================= */}
 
-        <section className="border-b border-slate-200 bg-slate-50 py-16">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <section className="border-y border-blue-100 bg-white py-16 sm:py-20">
 
-            <div className="text-center">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">
-                What We Train
-              </span>
+            <div className="max-w-3xl">
 
-              <h2 className="mt-3 text-2xl font-bold text-slate-900 sm:text-3xl">
-                Core Technology Areas
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">
+                Lab Environments
+              </p>
+
+              <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+                Practice the technologies your team works with
               </h2>
 
             </div>
 
+            <div className="mt-10 grid border-t border-blue-100 md:grid-cols-2 lg:grid-cols-3">
 
-            <div className="mx-auto mt-10 grid max-w-5xl grid-cols-2 gap-4 sm:grid-cols-3">
-
-              {trainingAreas.map((area) => {
-                const Icon = area.icon;
-
-                return (
-                  <div
-                    key={area.title}
-                    className="flex items-center gap-4 rounded-xl border border-slate-200 bg-white p-5 transition hover:-translate-y-1 hover:shadow-md"
-                  >
-
-                    <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-brand-blue">
-                      <Icon size={20} />
-                    </div>
-
-                    <span className="text-sm font-semibold text-slate-800">
-                      {area.title}
-                    </span>
-
-                  </div>
-                );
-              })}
+              {labs.map((lab, index) => (
+                <div
+                  key={lab.name}
+                  className={`
+                    ${index % 2 !== 0 ? "md:border-l" : ""}
+                    ${index >= 3 ? "lg:border-t" : ""}
+                    ${index !== 0 && index !== 3 ? "border-blue-100" : ""}
+                  `}
+                >
+                  <LabCard lab={lab} />
+                </div>
+              ))}
 
             </div>
 
           </div>
+
         </section>
 
-
         {/* =================================================
-            CUSTOMIZED TRAINING
+            CUSTOM CORPORATE LAB
         ================================================= */}
 
-        <section className="border-b border-slate-200 py-16">
-          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+        <section className="bg-white py-16 sm:py-20">
 
-            <div className="grid items-center gap-10 md:grid-cols-2">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+
+            <div className="grid items-center gap-10 lg:grid-cols-[1fr_0.8fr]">
 
               <div>
 
-                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">
-                  Customized Programs
-                </span>
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">
+                  Custom Corporate Labs
+                </p>
 
-                <h2 className="mt-3 text-2xl font-bold text-slate-900 sm:text-3xl">
-                  Training Built Around Your Requirements
+                <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+                  Train around your environment
                 </h2>
 
-                <p className="mt-4 text-sm leading-relaxed text-slate-600">
-                  Training programs can be customized according to your
-                  technology environment, team roles, and learning objectives.
+                <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
+                  Build a lab around the technologies, operating systems,
+                  network topology and exercises your employees actually
+                  need to practice.
                 </p>
+
+                <Link
+                  to="/contact?type=custom-lab"
+                  className="mt-7 inline-flex items-center rounded-lg bg-brand-navy px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-brand-blue"
+                >
+                  Discuss Your Requirements
+                  <ArrowRight size={17} className="ml-2" />
+                </Link>
 
               </div>
 
+              <div className="border-y border-blue-100">
 
-              <div className="grid grid-cols-3 gap-3">
+                {[
+                  "Custom network topologies",
+                  "Windows and Linux systems",
+                  "Multiple virtual machines",
+                  "Active Directory and DNS",
+                  "Routing and switching scenarios",
+                  "Cloud and hybrid environments",
+                ].map((item) => (
+                  <div
+                    key={item}
+                    className="flex items-center gap-3 border-b border-blue-100 py-4 last:border-b-0"
+                  >
 
-                <div className="rounded-xl bg-slate-50 p-5 text-center">
-                  <div className="text-lg font-bold text-blue-600">
-                    01
+                    <Check
+                      size={17}
+                      className="shrink-0 text-blue-600"
+                    />
+
+                    <span className="text-sm text-slate-600">
+                      {item}
+                    </span>
+
                   </div>
-
-                  <p className="mt-2 text-sm font-semibold text-slate-800">
-                    Understand
-                  </p>
-                </div>
-
-
-                <div className="rounded-xl bg-slate-50 p-5 text-center">
-                  <div className="text-lg font-bold text-blue-600">
-                    02
-                  </div>
-
-                  <p className="mt-2 text-sm font-semibold text-slate-800">
-                    Customize
-                  </p>
-                </div>
-
-
-                <div className="rounded-xl bg-slate-50 p-5 text-center">
-                  <div className="text-lg font-bold text-blue-600">
-                    03
-                  </div>
-
-                  <p className="mt-2 text-sm font-semibold text-slate-800">
-                    Deliver
-                  </p>
-                </div>
+                ))}
 
               </div>
 
             </div>
 
           </div>
-        </section>
 
+        </section>
 
         {/* =================================================
             FINAL CTA
         ================================================= */}
 
-        <section className="py-20">
-          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <section className="px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
 
-            <div className="rounded-2xl bg-brand-navy px-6 py-12 text-center sm:px-12">
+          <div className="mx-auto max-w-6xl overflow-hidden rounded-3xl bg-brand-navy">
 
-              <h2 className="text-3xl font-bold text-white">
-                Planning Training for Your Team?
+            <div className="px-6 py-12 sm:px-12 sm:py-14">
+
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-300">
+                Corporate Lab Training
+              </p>
+
+              <h2 className="mt-4 max-w-3xl text-3xl font-bold text-white sm:text-4xl">
+                Give your team a place to practice.
               </h2>
 
-              <p className="mx-auto mt-3 max-w-xl text-sm text-slate-300">
-                Tell us your requirements and we&apos;ll help structure the
-                right training program.
+              <p className="mt-4 max-w-2xl text-sm leading-7 text-blue-100 sm:text-base">
+                Tell us what your employees need to learn and we can
+                help you plan the right lab environment.
               </p>
 
               <Link
                 to="/contact?type=corporate-training"
-                className="mt-7 inline-flex items-center rounded-lg bg-white px-5 py-3 text-sm font-semibold text-brand-navy transition hover:bg-slate-100"
+                className="mt-7 inline-flex items-center rounded-lg bg-white px-6 py-3.5 text-sm font-semibold text-brand-navy transition hover:bg-blue-50"
               >
-                Contact Us
-                <ArrowRight size={16} className="ml-2" />
+                Talk to Us
+                <ArrowRight size={17} className="ml-2" />
               </Link>
 
             </div>
 
           </div>
+
         </section>
 
       </main>

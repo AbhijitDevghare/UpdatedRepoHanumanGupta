@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { Menu, X, Network } from "lucide-react";
+
 import CoursesMegaMenu from "./CoursesMegaMenu";
 
 const links = [
@@ -11,103 +12,406 @@ const links = [
   ["/blogs", "Blogs"],
   ["/contact", "Contact Us"],
 ];
+
+/* =========================================================
+   DESKTOP NAV LINK
+========================================================= */
+
 const navClass = ({ isActive }) =>
-  `px-3.5 py-2 text-sm font-medium transition-colors ${isActive ? "text-brand-blue border-b-2 border-brand-blue" : "text-slate-700 hover:text-brand-blue"}`;
+  `
+    relative
+    px-3.5
+    py-2
+    text-sm
+    font-medium
+    transition-colors
+    duration-200
+    ${
+      isActive
+        ? "text-brand-blue"
+        : "text-slate-700 hover:text-brand-blue"
+    }
+  `;
+
+/* =========================================================
+   MOBILE NAV LINK
+========================================================= */
+
+const mobileNavClass = ({ isActive }) =>
+  `
+    block
+    rounded-lg
+    px-3
+    py-2.5
+    text-sm
+    font-medium
+    transition-colors
+    duration-200
+    ${
+      isActive
+        ? "bg-slate-50 text-brand-blue"
+        : "text-slate-700 hover:bg-slate-50 hover:text-brand-blue"
+    }
+  `;
+
+
+/* =========================================================
+   NAVBAR
+========================================================= */
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [mobileCoursesOpen, setMobileCoursesOpen] = useState(false);
 
-  const toggleMobileMenu = () => {
-    setOpen((isOpen) => {
-      if (isOpen) {
-        setMobileCoursesOpen(false);
-        return false;
-      }
+  /* ---------------------------------------------------------
+     Toggle mobile menu
+  --------------------------------------------------------- */
 
+  const toggleMobileMenu = () => {
+    setOpen((prev) => !prev);
+
+    if (open) {
       setMobileCoursesOpen(false);
-      return true;
-    });
+    }
   };
+
+
+  /* ---------------------------------------------------------
+     Close everything
+  --------------------------------------------------------- */
 
   const closeMobileMenu = () => {
     setOpen(false);
     setMobileCoursesOpen(false);
   };
 
+
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-lg bg-brand-navy flex items-center justify-center text-white shadow-md group-hover:bg-brand-blue">
-              <Network className="text-cyan-400" size={23} />
+    <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-md">
+
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+        {/* =====================================================
+            MAIN NAVBAR
+        ===================================================== */}
+
+        <div className="flex h-20 items-center justify-between">
+
+          {/* =================================================
+              LOGO
+          ================================================= */}
+
+          <Link
+            to="/"
+            onClick={closeMobileMenu}
+            className="group flex items-center gap-3"
+          >
+
+            <div
+              className="
+                flex
+                h-10
+                w-10
+                items-center
+                justify-center
+                rounded-lg
+                bg-brand-navy
+                text-white
+                shadow-sm
+                transition-colors
+                duration-200
+                group-hover:bg-brand-blue
+              "
+            >
+              <Network
+                className="text-cyan-400"
+                size={23}
+                strokeWidth={1.8}
+              />
             </div>
+
+
             <div>
-              <span className="text-xl font-extrabold text-brand-navy tracking-tight block leading-none">
+
+              <span
+                className="
+                  block
+                  text-xl
+                  font-extrabold
+                  leading-none
+                  tracking-tight
+                  text-brand-navy
+                "
+              >
                 NexusTech<span className="text-brand-blue">.</span>
               </span>
-              <span className="text-[10px] font-mono tracking-wider uppercase text-slate-500 font-semibold mt-1 block">
+
+              <span
+                className="
+                  mt-1
+                  block
+                  text-[10px]
+                  font-semibold
+                  uppercase
+                  tracking-wider
+                  text-slate-500
+                "
+              >
                 Technical IT Institute &amp; Labs
               </span>
+
             </div>
+
           </Link>
-          <nav className="hidden xl:flex items-center space-x-1">
-            <NavLink to="/" end className={navClass}>
-              Home
-            </NavLink>
-            <CoursesMegaMenu />
-            {links.map(([to, label]) => (
-              <NavLink key={to} to={to} className={navClass}>
-                {label}
-              </NavLink>
-            ))}
-          </nav>
-          <div className="flex items-center gap-3">
-            <Link
-              to="/contact"
-              className="hidden sm:inline-flex items-center px-5 py-2.5 text-sm font-semibold rounded-lg text-white bg-brand-navy hover:bg-brand-blue shadow-sm"
-            >
-              Request Training <span className="ml-2">→</span>
-            </Link>
-            <button
-              onClick={toggleMobileMenu}
-              className="xl:hidden p-2 text-brand-navy"
-              aria-label="Toggle navigation"
-            >
-              {open ? <X /> : <Menu />}
-            </button>
-          </div>
-        </div>
-        {open && (
-          <nav className="xl:hidden border-t border-slate-100 py-4 space-y-3">
+
+
+          {/* =================================================
+              DESKTOP NAVIGATION
+          ================================================= */}
+
+          <nav className="hidden items-center xl:flex">
+
+            {/* Home */}
+
             <NavLink
-              onClick={closeMobileMenu}
               to="/"
               end
-              className="block px-3 py-2 font-semibold"
+              className={navClass}
             >
-              Home
+              {({ isActive }) => (
+                <span className="relative">
+
+                  Home
+
+                  {isActive && (
+                    <span
+                      className="
+                        absolute
+                        -bottom-2
+                        left-0
+                        h-0.5
+                        w-full
+                        rounded-full
+                        bg-brand-blue
+                      "
+                    />
+                  )}
+
+                </span>
+              )}
             </NavLink>
-            <CoursesMegaMenu
-              mobile
-              mobileOpen={mobileCoursesOpen}
-              onMobileToggle={() => setMobileCoursesOpen((isOpen) => !isOpen)}
-              onNavigate={closeMobileMenu}
-            />
+
+
+            {/* Courses */}
+
+            <CoursesMegaMenu />
+
+
+            {/* Other links */}
+
             {links.map(([to, label]) => (
+
               <NavLink
-                onClick={closeMobileMenu}
                 key={to}
                 to={to}
-                className="block px-3 py-2 font-medium text-slate-700"
+                className={navClass}
               >
-                {label}
+                {({ isActive }) => (
+                  <span className="relative">
+
+                    {label}
+
+                    {isActive && (
+                      <span
+                        className="
+                          absolute
+                          -bottom-2
+                          left-0
+                          h-0.5
+                          w-full
+                          rounded-full
+                          bg-brand-blue
+                        "
+                      />
+                    )}
+
+                  </span>
+                )}
               </NavLink>
+
             ))}
+
           </nav>
+
+
+          {/* =================================================
+              RIGHT SIDE
+          ================================================= */}
+
+          <div className="flex items-center gap-3">
+
+            {/* Request Training */}
+
+            <Link
+              to="/contact"
+              className="
+                hidden
+                items-center
+                rounded-lg
+                bg-brand-navy
+                px-5
+                py-2.5
+                text-sm
+                font-semibold
+                text-white
+                shadow-sm
+                transition-colors
+                duration-200
+                hover:bg-brand-blue
+                sm:inline-flex
+              "
+            >
+              Request Training
+
+              <span className="ml-2">
+                →
+              </span>
+            </Link>
+
+
+            {/* Mobile Menu Button */}
+
+            <button
+              type="button"
+              onClick={toggleMobileMenu}
+              className="
+                rounded-lg
+                p-2
+                text-brand-navy
+                transition
+                hover:bg-slate-100
+                xl:hidden
+              "
+              aria-label={
+                open
+                  ? "Close navigation menu"
+                  : "Open navigation menu"
+              }
+              aria-expanded={open}
+            >
+              {open ? (
+                <X size={24} />
+              ) : (
+                <Menu size={24} />
+              )}
+            </button>
+
+          </div>
+
+        </div>
+
+
+        {/* =====================================================
+            MOBILE NAVIGATION
+        ===================================================== */}
+
+        {open && (
+
+          <nav
+            className="
+              border-t
+              border-slate-100
+              py-4
+              xl:hidden
+            "
+          >
+
+            <div className="space-y-1">
+
+              {/* Home */}
+
+              <NavLink
+                to="/"
+                end
+                onClick={closeMobileMenu}
+                className={mobileNavClass}
+              >
+                Home
+              </NavLink>
+
+
+              {/* Courses */}
+
+              <div className="rounded-lg">
+
+                <CoursesMegaMenu
+                  mobile
+                  mobileOpen={mobileCoursesOpen}
+                  onMobileToggle={() =>
+                    setMobileCoursesOpen((prev) => !prev)
+                  }
+                  onNavigate={closeMobileMenu}
+                />
+
+              </div>
+
+
+              {/* Other links */}
+
+              {links.map(([to, label]) => (
+
+                <NavLink
+                  key={to}
+                  to={to}
+                  onClick={closeMobileMenu}
+                  className={mobileNavClass}
+                >
+                  {label}
+                </NavLink>
+
+              ))}
+
+            </div>
+
+
+            {/* Mobile Request Training */}
+
+            <div className="mt-4 border-t border-slate-100 pt-4 sm:hidden">
+
+              <Link
+                to="/contact"
+                onClick={closeMobileMenu}
+                className="
+                  flex
+                  w-full
+                  items-center
+                  justify-center
+                  rounded-lg
+                  bg-brand-navy
+                  px-5
+                  py-3
+                  text-sm
+                  font-semibold
+                  text-white
+                  transition-colors
+                  hover:bg-brand-blue
+                "
+              >
+                Request Training
+
+                <span className="ml-2">
+                  →
+                </span>
+              </Link>
+
+            </div>
+
+          </nav>
+
         )}
+
       </div>
+
     </header>
   );
 }

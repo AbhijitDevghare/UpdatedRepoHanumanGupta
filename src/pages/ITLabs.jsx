@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import {
   ArrowRight,
+  Check,
   Cloud,
   Layers3,
   Network,
@@ -11,172 +12,159 @@ import {
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 
-/* =========================================================
-   LAB IMAGES
-   ========================================================= */
-
-import NetworkingLab from "../assets/labs/networking.png";
-import LinuxLab from "../assets/labs/linux.png";
-import WindowsLab from "../assets/labs/windowsserver.png";
-import VMwareLab from "../assets/labs/vmware.png";
-import CloudLab from "../assets/labs/cloud.png";
-
+import Hero1 from "../assets/labs/hero1.png";
 
 /* =========================================================
-   LAB TECHNOLOGIES
-   ========================================================= */
+   LAB DATA
+========================================================= */
 
 const labs = [
   {
     name: "Networking",
     icon: Network,
-    image: NetworkingLab,
     description:
-      "Practice routing, switching, VLANs and network troubleshooting.",
-    topics: ["Routing", "Switching", "VLANs", "Subnetting"],
+      "Practice networking in a virtual environment where you can configure devices, connect different networks and troubleshoot connectivity problems.",
+    topics: [
+      "CCNA / CCNP",
+      "VLANs",
+      "Routing",
+      "OSPF",
+      "EIGRP",
+      "ACL",
+      "NAT",
+    ],
   },
-
   {
     name: "Linux",
     icon: Terminal,
-    image: LinuxLab,
     description:
-      "Work with Linux systems, commands, services and administration.",
-    topics: ["CLI", "Services", "Permissions", "Administration"],
+      "Work with Linux systems and practice the commands and administration tasks used in real IT environments.",
+    topics: [
+      "Linux CLI",
+      "File Management",
+      "Users & Permissions",
+      "Services",
+      "Networking",
+      "Troubleshooting",
+    ],
   },
-
   {
     name: "Windows Server",
     icon: Server,
-    image: WindowsLab,
     description:
-      "Practice Active Directory, DNS, DHCP and Windows administration.",
-    topics: ["AD", "DNS", "DHCP", "PowerShell"],
+      "Practice Windows Server administration and understand how enterprise Windows environments are configured and managed.",
+    topics: [
+      "Active Directory",
+      "DNS",
+      "DHCP",
+      "Group Policy",
+      "PowerShell",
+      "Server Administration",
+    ],
   },
-
   {
     name: "VMware",
     icon: Layers3,
-    image: VMwareLab,
     description:
-      "Work with virtual machines and enterprise virtualization.",
-    topics: ["ESXi", "vCenter", "VMs", "Virtualization"],
+      "Practice virtualization concepts by working with virtual machines, ESXi and vCenter administration scenarios.",
+    topics: [
+      "vSphere",
+      "ESXi",
+      "vCenter",
+      "Virtual Machines",
+      "Networking",
+      "Troubleshooting",
+    ],
   },
-
   {
     name: "Cloud",
     icon: Cloud,
-    image: CloudLab,
     description:
-      "Explore cloud infrastructure, networking and deployment.",
-    topics: ["AWS", "Azure", "Networking", "Infrastructure"],
+      "Understand cloud infrastructure by practicing common networking, identity, security and deployment scenarios.",
+    topics: [
+      "AWS",
+      "Azure",
+      "VPC",
+      "Virtual Networks",
+      "IAM",
+      "Cloud Infrastructure",
+    ],
   },
 ];
-
 
 /* =========================================================
-   WHAT WE PROVIDE
-   ========================================================= */
+   PRACTICAL ACTIVITIES
+========================================================= */
 
-const labFeatures = [
+const activities = [
   {
-    title: "Dedicated Lab Environments",
-    icon: Server,
+    number: "01",
+    title: "Configure",
+    text:
+      "Set up networks, servers, virtual machines and cloud resources according to the required scenario.",
   },
   {
-    title: "Networking & Infrastructure",
-    icon: Network,
+    number: "02",
+    title: "Test",
+    text:
+      "Make configuration changes and observe how systems, services and network communication respond.",
   },
   {
-    title: "Cloud & Virtualization",
-    icon: Cloud,
+    number: "03",
+    title: "Troubleshoot",
+    text:
+      "Work through connectivity issues, service failures, incorrect configurations and other technical problems.",
   },
   {
-    title: "Configuration & Troubleshooting",
-    icon: Terminal,
-  },
-  {
-    title: "Remote Hands-on Practice",
-    icon: Layers3,
+    number: "04",
+    title: "Experiment",
+    text:
+      "Try different configurations safely and understand what changes when you modify the environment.",
   },
 ];
-
-
-/* =========================================================
-   PRACTICAL AREAS
-   ========================================================= */
-
-const practiceAreas = [
-  {
-    title: "Network Configuration",
-    icon: Network,
-  },
-  {
-    title: "Server Administration",
-    icon: Server,
-  },
-  {
-    title: "Virtualization",
-    icon: Layers3,
-  },
-  {
-    title: "Cloud Infrastructure",
-    icon: Cloud,
-  },
-];
-
 
 /* =========================================================
    LAB CARD
-   ========================================================= */
+========================================================= */
 
 function LabCard({ lab }) {
   const Icon = lab.icon;
 
   return (
-    <article className="group overflow-hidden rounded-2xl border border-slate-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+    <article className="group border-b border-blue-100 bg-white p-7 transition-all duration-300 hover:bg-blue-50/30">
 
-      {/* Image */}
+      <div className="flex items-start gap-5">
 
-      <div className="relative overflow-hidden">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-blue-100 text-blue-600 transition-all duration-300 group-hover:bg-blue-600 group-hover:text-white">
+          <Icon size={21} strokeWidth={1.8} />
+        </div>
 
-        <img
-          src={lab.image}
-          alt={`${lab.name} training lab`}
-          className="aspect-[4/3] w-full object-cover transition duration-500 group-hover:scale-105"
-          loading="lazy"
-        />
+        <div>
 
-        {/* Technology Icon */}
+          <h3 className="text-xl font-bold text-slate-950">
+            {lab.name}
+          </h3>
 
-        <div className="absolute left-4 top-4 flex h-10 w-10 items-center justify-center rounded-lg bg-white/95 text-brand-blue shadow-md">
-          <Icon size={20} />
+          <p className="mt-3 text-sm leading-7 text-slate-600">
+            {lab.description}
+          </p>
+
         </div>
 
       </div>
 
+      <div className="mt-6 border-t border-blue-100 pt-5">
 
-      {/* Content */}
-
-      <div className="p-5">
-
-        <h3 className="text-xl font-bold text-slate-900">
-          {lab.name}
-        </h3>
-
-        <p className="mt-2 text-sm leading-relaxed text-slate-600">
-          {lab.description}
+        <p className="mb-4 text-xs font-semibold uppercase tracking-[0.15em] text-blue-500">
+          What you can practice
         </p>
 
-
-        {/* Topics */}
-
-        <div className="mt-4 flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-x-5 gap-y-2">
 
           {lab.topics.map((topic) => (
             <span
               key={topic}
-              className="rounded-full bg-slate-50 px-3 py-1.5 text-xs font-medium text-slate-600 ring-1 ring-slate-200"
+              className="text-sm font-medium text-slate-600"
             >
               {topic}
             </span>
@@ -186,197 +174,257 @@ function LabCard({ lab }) {
 
       </div>
 
+      <Link
+        to="/contact?type=lab-access"
+        className="mt-6 inline-flex items-center text-sm font-semibold text-blue-600 transition hover:text-blue-800"
+      >
+        Request access
+        <ArrowRight size={16} className="ml-1.5" />
+      </Link>
+
     </article>
   );
 }
 
-
 /* =========================================================
-   MAIN COMPONENT
-   ========================================================= */
+   PAGE
+========================================================= */
 
 export default function ITLabs() {
   return (
     <>
       <Navbar />
 
-      <main className="bg-white">
+      <main className="overflow-hidden bg-white text-slate-900">
 
         {/* =================================================
-            INTRO
+            HERO
         ================================================= */}
 
-        <section className="border-b border-slate-200 py-20">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <section className="border-b border-blue-100 bg-white">
 
-            <div className="text-center">
+          <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
 
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">
-                IT Labs
-              </span>
+            <div className="grid items-center gap-12 lg:grid-cols-[0.9fr_1.1fr]">
 
-              <h1 className="mx-auto mt-4 max-w-3xl text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-                Learn by Doing
-              </h1>
+              {/* TEXT */}
 
-              <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-slate-600">
-                Practice real infrastructure technologies through
-                hands-on virtual lab environments.
-              </p>
+              <div>
 
-              <div className="mt-7">
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">
+                  Virtual IT Labs
+                </p>
 
-                <Link
-                  to="/contact?type=lab-access"
-                  className="inline-flex items-center rounded-lg bg-brand-blue px-5 py-3 text-sm font-semibold text-white transition hover:bg-blue-700"
-                >
-                  Enquire About Labs
-                  <ArrowRight size={16} className="ml-2" />
-                </Link>
+                <h1 className="mt-5 text-4xl font-bold leading-tight tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
+                  Learn by
+                  <span className="block text-blue-700">
+                    doing.
+                  </span>
+                </h1>
+
+                <p className="mt-6 max-w-xl text-base leading-8 text-slate-600 sm:text-lg">
+                  IT concepts become easier to understand when you can
+                  actually configure them. Our virtual labs give learners
+                  a practical environment to build, test, break and
+                  troubleshoot IT systems.
+                </p>
+
+                <p className="mt-4 max-w-xl text-sm leading-7 text-slate-500 sm:text-base">
+                  Practice networking, Linux, Windows Server, VMware and
+                  cloud technologies without depending on physical lab
+                  infrastructure.
+                </p>
+
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+
+                  <Link
+                    to="/contact?type=lab-access"
+                    className="inline-flex items-center justify-center rounded-lg bg-brand-navy px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-brand-blue"
+                  >
+                    Request Lab Access
+                    <ArrowRight size={17} className="ml-2" />
+                  </Link>
+
+                  <Link
+                    to="/contact?type=custom-lab"
+                    className="inline-flex items-center justify-center rounded-lg border border-blue-200 px-6 py-3.5 text-sm font-semibold text-blue-700 transition hover:border-blue-300 hover:bg-blue-50"
+                  >
+                    Build a Custom Lab
+                  </Link>
+
+                </div>
 
               </div>
 
-            </div>
+              {/* ONLY IMAGE ON PAGE */}
 
+              <div className="overflow-hidden rounded-2xl border border-blue-100 bg-white shadow-xl">
 
-            {/* =================================================
-                WHAT WE PROVIDE
-            ================================================= */}
-
-            <div className="mx-auto mt-14 max-w-5xl">
-
-              <div className="mb-6 text-center">
-
-                <span className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
-                  What We Provide
-                </span>
-
-              </div>
-
-
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-
-                {labFeatures.map((feature) => {
-                  const Icon = feature.icon;
-
-                  return (
-                    <div
-                      key={feature.title}
-                      className="rounded-xl border border-slate-200 bg-slate-50 p-5 text-center transition hover:-translate-y-1 hover:bg-white hover:shadow-sm"
-                    >
-
-                      <Icon
-                        size={22}
-                        className="mx-auto text-brand-blue"
-                      />
-
-                      <p className="mt-3 text-sm font-semibold leading-snug text-slate-800">
-                        {feature.title}
-                      </p>
-
-                    </div>
-                  );
-                })}
+                <img
+                  src={Hero1}
+                  alt="Virtual IT lab environment"
+                  className="h-[320px] w-full object-cover sm:h-[420px] lg:h-[480px]"
+                />
 
               </div>
 
             </div>
 
           </div>
+
         </section>
 
+        {/* =================================================
+            WHAT IS AN IT LAB?
+        ================================================= */}
+
+        <section className="bg-white py-20 sm:py-24">
+
+          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">
+              About the Labs
+            </p>
+
+            <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+              A place to practice what you learn
+            </h2>
+
+            <div className="mt-6 space-y-5 text-sm leading-8 text-slate-600 sm:text-base">
+
+              <p>
+                A virtual IT lab is a practical environment where you can
+                work with technology without needing to build the complete
+                infrastructure yourself. Instead of only reading about
+                routing, servers, virtualization or cloud services, you
+                can actually configure them and see how they behave.
+              </p>
+
+              <p>
+                You can create configurations, test different approaches,
+                make mistakes and troubleshoot the resulting problems.
+                This makes the lab useful for both learning a technology
+                for the first time and improving your practical skills.
+              </p>
+
+              <p>
+                The environments can be used alongside a course, for
+                individual practice, for technical workshops or for
+                organization-specific training requirements.
+              </p>
+
+            </div>
+
+          </div>
+
+        </section>
 
         {/* =================================================
             LAB ENVIRONMENTS
         ================================================= */}
 
-        <section className="py-16">
-          <div
-            id="labs"
-            className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8"
-          >
+        <section className="border-y border-blue-100 bg-white py-20 sm:py-24">
 
-            <div className="text-center">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">
+            <div className="max-w-3xl">
+
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">
                 Lab Environments
-              </span>
+              </p>
 
-              <h2 className="mt-3 text-2xl font-bold text-slate-900 sm:text-3xl">
-                Choose Your Technology
+              <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+                Choose the technology you want to practice
               </h2>
 
-              <p className="mx-auto mt-3 max-w-xl text-sm text-slate-500">
-                Practice, configure and troubleshoot across core
-                infrastructure technologies.
+              <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
+                Each environment focuses on practical tasks related to
+                the technology. The exact exercises can be aligned with
+                your course or training objective.
               </p>
 
             </div>
 
+            {/* LAB LIST */}
 
-            {/* =================================================
-                LAB CARDS
-            ================================================= */}
+            <div className="mt-12 grid border-t border-blue-100 md:grid-cols-2">
 
-            <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-
-              {labs.map((lab) => (
-                <LabCard
+              {labs.map((lab, index) => (
+                <div
                   key={lab.name}
-                  lab={lab}
-                />
+                  className={`
+                    ${index % 2 !== 0 ? "md:border-l border-blue-100" : ""}
+                  `}
+                >
+                  <LabCard lab={lab} />
+                </div>
               ))}
+
+              {/* Extra space for balanced layout */}
+
+              <div className="hidden border-b border-blue-100 md:block" />
 
             </div>
 
           </div>
+
         </section>
 
-
         {/* =================================================
-            PRACTICAL AREAS
+            HOW THE LAB CAN BE USED
         ================================================= */}
 
-        <section className="border-y border-slate-200 bg-slate-50 py-16">
+        <section className="bg-white py-20 sm:py-24">
 
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
 
             <div className="text-center">
 
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">
-                Practical Training
-              </span>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">
+                Practical Learning
+              </p>
 
-              <h2 className="mt-3 text-2xl font-bold text-slate-900 sm:text-3xl">
-                What You Can Practice
+              <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+                What can you actually do in the lab?
               </h2>
+
+              <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
+                The purpose of the lab is not simply to provide access to
+                machines. It gives you a controlled environment where you
+                can work through practical technical problems.
+              </p>
 
             </div>
 
+            <div className="mt-12 grid border-t border-blue-100 md:grid-cols-2">
 
-            <div className="mx-auto mt-10 grid max-w-4xl grid-cols-2 gap-4 sm:grid-cols-4">
+              {activities.map((item, index) => (
+                <div
+                  key={item.title}
+                  className={`
+                    flex gap-5 border-b border-blue-100 py-7
+                    ${index % 2 !== 0 ? "md:border-l md:pl-8" : "md:pr-8"}
+                  `}
+                >
 
-              {practiceAreas.map((area) => {
-                const Icon = area.icon;
+                  <span className="text-sm font-bold text-blue-600">
+                    {item.number}
+                  </span>
 
-                return (
-                  <div
-                    key={area.title}
-                    className="rounded-xl border border-slate-200 bg-white p-5 text-center transition hover:-translate-y-1 hover:shadow-md"
-                  >
+                  <div>
 
-                    <Icon
-                      size={22}
-                      className="mx-auto text-brand-blue"
-                    />
+                    <h3 className="text-base font-bold text-slate-950">
+                      {item.title}
+                    </h3>
 
-                    <p className="mt-3 text-sm font-semibold text-slate-800">
-                      {area.title}
+                    <p className="mt-2 text-sm leading-6 text-slate-600">
+                      {item.text}
                     </p>
 
                   </div>
-                );
-              })}
+
+                </div>
+              ))}
 
             </div>
 
@@ -384,33 +432,141 @@ export default function ITLabs() {
 
         </section>
 
+        {/* =================================================
+            CUSTOM LAB
+        ================================================= */}
+
+        <section className="border-y border-blue-100 bg-white py-20 sm:py-24">
+
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+
+            <div className="grid items-center gap-12 lg:grid-cols-[1fr_0.9fr]">
+
+              <div>
+
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">
+                  Custom Labs
+                </p>
+
+                <h2 className="mt-4 text-3xl font-bold text-slate-950 sm:text-4xl">
+                  Need a specific environment?
+                </h2>
+
+                <p className="mt-5 text-sm leading-7 text-slate-600 sm:text-base">
+                  Not every training requirement fits into a standard
+                  environment. A custom lab can be planned around the
+                  technologies, systems and exercises required for your
+                  training.
+                </p>
+
+                <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
+                  You can specify the operating systems, number of
+                  machines, network topology, software versions,
+                  technologies and expected exercises.
+                </p>
+
+                <Link
+                  to="/contact?type=custom-lab"
+                  className="mt-7 inline-flex items-center rounded-lg bg-brand-navy px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-brand-blue"
+                >
+                  Discuss Your Lab
+                  <ArrowRight size={17} className="ml-2" />
+                </Link>
+
+              </div>
+
+              {/* CUSTOM LAB DETAILS */}
+
+              <div className="border-y border-blue-100">
+
+                <div className="border-b border-blue-100 py-5">
+
+                  <h3 className="text-lg font-bold text-slate-950">
+                    A custom lab can include
+                  </h3>
+
+                </div>
+
+                <div className="grid sm:grid-cols-2">
+
+                  {[
+                    "Custom network topologies",
+                    "Windows and Linux systems",
+                    "Multiple virtual machines",
+                    "Active Directory and DNS",
+                    "Routing and switching scenarios",
+                    "Cloud and hybrid environments",
+                    "Course-specific exercises",
+                    "Specific software versions",
+                  ].map((item) => (
+                    <div
+                      key={item}
+                      className="flex items-center gap-3 border-b border-blue-100 py-4 sm:px-4"
+                    >
+
+                      <Check
+                        size={16}
+                        className="shrink-0 text-blue-600"
+                      />
+
+                      <span className="text-sm text-slate-600">
+                        {item}
+                      </span>
+
+                    </div>
+                  ))}
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
 
         {/* =================================================
             FINAL CTA
         ================================================= */}
 
-        <section className="py-20">
+        <section className="bg-white px-4 py-20 sm:px-6 lg:px-8">
 
-          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-6xl overflow-hidden rounded-3xl bg-brand-navy">
 
-            <div className="rounded-2xl bg-brand-navy px-6 py-12 text-center sm:px-12">
+            <div className="px-6 py-14 sm:px-12 sm:py-16">
 
-              <h2 className="text-3xl font-bold text-white">
-                Ready to Practice?
-              </h2>
-
-              <p className="mx-auto mt-3 max-w-xl text-sm text-slate-300">
-                Get access to practical lab environments for your
-                technology training.
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-300">
+                Virtual IT Labs
               </p>
 
-              <Link
-                to="/contact?type=lab-access"
-                className="mt-7 inline-flex items-center rounded-lg bg-white px-5 py-3 text-sm font-semibold text-brand-navy transition hover:bg-slate-100"
-              >
-                Contact Us
-                <ArrowRight size={16} className="ml-2" />
-              </Link>
+              <h2 className="mt-4 max-w-3xl text-3xl font-bold text-white sm:text-4xl">
+                Ready to practice?
+              </h2>
+
+              <p className="mt-4 max-w-2xl text-sm leading-7 text-blue-100 sm:text-base">
+                Tell us what technology you are learning, what kind of
+                environment you need and how you want to use the lab.
+              </p>
+
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+
+                <Link
+                  to="/contact?type=lab-access"
+                  className="inline-flex items-center justify-center rounded-lg bg-white px-6 py-3.5 text-sm font-semibold text-brand-navy transition hover:bg-blue-50"
+                >
+                  Request Lab Access
+                  <ArrowRight size={17} className="ml-2" />
+                </Link>
+
+                <Link
+                  to="/contact?type=custom-lab"
+                  className="inline-flex items-center justify-center rounded-lg border border-blue-300 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-blue-800"
+                >
+                  Ask About Custom Labs
+                </Link>
+
+              </div>
 
             </div>
 

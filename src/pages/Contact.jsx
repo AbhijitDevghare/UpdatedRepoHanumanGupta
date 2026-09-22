@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import emailjs from "@emailjs/browser";
 import {
   Mail,
   Phone,
   MessageCircle,
   Send,
   CheckCircle2,
+  Loader2,
+  AlertCircle,
 } from "lucide-react";
 
 import Navbar from "../components/Navbar";
-import TopBar from "../components/TopBar";
 import Footer from "../components/Footer";
 
 /*
@@ -38,6 +40,8 @@ const Contact = () => {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
   /*
   |--------------------------------------------------------------------------
@@ -87,26 +91,90 @@ const Contact = () => {
       ...prev,
       [name]: value,
     }));
+
+    // Remove previous error when user starts typing again
+    if (error) {
+      setError("");
+    }
   };
 
   /*
   |--------------------------------------------------------------------------
-  | FORM SUBMIT
+  | FORM SUBMIT - EMAILJS
   |--------------------------------------------------------------------------
   */
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (
-      !formData.fullName ||
-      !formData.email ||
-      !formData.message
+      !formData.fullName.trim() ||
+      !formData.email.trim() ||
+      !formData.message.trim()
     ) {
+      setError("Please fill in all required fields.");
       return;
     }
 
-    setSubmitted(true);
+    setSubmitting(true);
+    setError("");
+
+    try {
+      const templateParams = {
+        name: formData.fullName,
+        email: formData.email,
+        phone: formData.phone || "Not provided",
+        interested_in: formData.interestedIn || "Not specified",
+        message: formData.message,
+        to_email: CONTACT.email,
+      };
+
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        templateParams,
+        {
+          publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+        }
+      );
+
+      setSubmitted(true);
+
+      setFormData({
+        fullName: "",
+        email: "",
+        phone: "",
+        interestedIn: "",
+        message: "",
+      });
+    } catch (err) {
+      console.error("EmailJS Error:", err);
+
+      setError(
+        "Unable to send your message right now. Please try again or contact us directly by email."
+      );
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  /*
+  |--------------------------------------------------------------------------
+  | RESET FORM
+  |--------------------------------------------------------------------------
+  */
+
+  const handleSendAnother = () => {
+    setSubmitted(false);
+    setError("");
+
+    setFormData({
+      fullName: "",
+      email: "",
+      phone: "",
+      interestedIn: "",
+      message: "",
+    });
   };
 
   /*
@@ -123,18 +191,15 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-white text-slate-900">
-      
       <Navbar />
 
       <main>
-
         {/* ================================================================
             HEADER
         ================================================================= */}
 
         <section className="px-6 pb-10 pt-16 sm:px-10 lg:px-16">
           <div className="mx-auto max-w-5xl text-center">
-
             <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-blue-600">
               Contact Us
             </p>
@@ -146,7 +211,6 @@ const Contact = () => {
             <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-600">
               Choose the easiest way to reach us or send us a quick message.
             </p>
-
           </div>
         </section>
 
@@ -156,12 +220,9 @@ const Contact = () => {
 
         <section className="px-6 pb-12 sm:px-10 lg:px-16">
           <div className="mx-auto max-w-5xl">
-
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
 
-              {/* ------------------------------------------------------------
-                  WHATSAPP
-              ------------------------------------------------------------- */}
+              {/* WHATSAPP */}
 
               <a
                 href={`https://wa.me/${CONTACT.whatsapp}`}
@@ -170,10 +231,7 @@ const Contact = () => {
                 className="group rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-green-300 hover:shadow-lg"
               >
                 <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-green-50 text-green-600 transition-all duration-300 group-hover:bg-green-600 group-hover:text-white">
-                  <MessageCircle
-                    size={27}
-                    strokeWidth={1.8}
-                  />
+                  <MessageCircle size={27} strokeWidth={1.8} />
                 </div>
 
                 <h2 className="mt-4 text-base font-semibold text-slate-900">
@@ -185,19 +243,14 @@ const Contact = () => {
                 </p>
               </a>
 
-              {/* ------------------------------------------------------------
-                  EMAIL
-              ------------------------------------------------------------- */}
+              {/* EMAIL */}
 
               <a
                 href={`mailto:${CONTACT.email}`}
                 className="group rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-300 hover:shadow-lg"
               >
                 <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-blue-50 text-blue-600 transition-all duration-300 group-hover:bg-blue-600 group-hover:text-white">
-                  <Mail
-                    size={27}
-                    strokeWidth={1.8}
-                  />
+                  <Mail size={27} strokeWidth={1.8} />
                 </div>
 
                 <h2 className="mt-4 text-base font-semibold text-slate-900">
@@ -209,19 +262,14 @@ const Contact = () => {
                 </p>
               </a>
 
-              {/* ------------------------------------------------------------
-                  PHONE
-              ------------------------------------------------------------- */}
+              {/* PHONE */}
 
               <a
                 href={`tel:${CONTACT.phone.replace(/\s+/g, "")}`}
                 className="group rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-300 hover:shadow-lg"
               >
                 <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-blue-50 text-blue-600 transition-all duration-300 group-hover:bg-blue-600 group-hover:text-white">
-                  <Phone
-                    size={27}
-                    strokeWidth={1.8}
-                  />
+                  <Phone size={27} strokeWidth={1.8} />
                 </div>
 
                 <h2 className="mt-4 text-base font-semibold text-slate-900">
@@ -233,9 +281,7 @@ const Contact = () => {
                 </p>
               </a>
 
-              {/* ------------------------------------------------------------
-                  LINKEDIN
-              ------------------------------------------------------------- */}
+              {/* LINKEDIN */}
 
               <a
                 href={CONTACT.linkedin}
@@ -244,8 +290,6 @@ const Contact = () => {
                 className="group rounded-2xl border border-slate-200 bg-white p-6 text-center shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-blue-300 hover:shadow-lg"
               >
                 <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-blue-50 text-blue-600 transition-all duration-300 group-hover:bg-blue-600 group-hover:text-white">
-
-                  {/* LinkedIn SVG */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -255,7 +299,6 @@ const Contact = () => {
                   >
                     <path d="M20.45 20.45h-3.56v-5.58c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.44-2.13 2.94v5.68H9.35V8.99h3.42v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.47v6.28h-.03zM5.34 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM3.56 20.45h3.56V8.99H3.56v11.46z" />
                   </svg>
-
                 </div>
 
                 <h2 className="mt-4 text-base font-semibold text-slate-900">
@@ -266,7 +309,6 @@ const Contact = () => {
                   Connect with us
                 </p>
               </a>
-
             </div>
           </div>
         </section>
@@ -306,40 +348,39 @@ const Contact = () => {
                   </h2>
 
                   <p className="mt-3 max-w-md text-sm leading-6 text-slate-600">
-                    Thank you for contacting us. We’ll get back to you soon.
+                    Thank you for contacting us. We’ve received your message
+                    and will get back to you soon.
                   </p>
 
                   <button
                     type="button"
-                    onClick={() => {
-                      setSubmitted(false);
-
-                      setFormData({
-                        fullName: "",
-                        email: "",
-                        phone: "",
-                        interestedIn: "",
-                        message: "",
-                      });
-                    }}
+                    onClick={handleSendAnother}
                     className="mt-6 rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-700"
                   >
                     Send Another Message
                   </button>
-
                 </div>
               ) : (
-
-                /* ==========================================================
-                   FORM
-                =========================================================== */
-
                 <form
                   onSubmit={handleSubmit}
                   className="space-y-5"
                 >
 
-                  {/* Name + Email */}
+                  {/* ERROR */}
+
+                  {error && (
+                    <div className="flex items-start gap-3 rounded-xl border border-red-200 bg-red-50 px-4 py-3.5 text-sm text-red-700">
+                      <AlertCircle
+                        size={19}
+                        className="mt-0.5 shrink-0"
+                      />
+
+                      <p>{error}</p>
+                    </div>
+                  )}
+
+                  {/* NAME + EMAIL */}
+
                   <div className="grid gap-5 md:grid-cols-2">
 
                     <div>
@@ -358,6 +399,7 @@ const Contact = () => {
                         placeholder="Your name"
                         className={inputClass}
                         required
+                        disabled={submitting}
                       />
                     </div>
 
@@ -377,12 +419,14 @@ const Contact = () => {
                         placeholder="you@example.com"
                         className={inputClass}
                         required
+                        disabled={submitting}
                       />
                     </div>
 
                   </div>
 
-                  {/* Phone + Interested In */}
+                  {/* PHONE + INTERESTED IN */}
+
                   <div className="grid gap-5 md:grid-cols-2">
 
                     <div>
@@ -397,6 +441,7 @@ const Contact = () => {
                         onChange={handleChange}
                         placeholder="+91 XXXXX XXXXX"
                         className={inputClass}
+                        disabled={submitting}
                       />
                     </div>
 
@@ -410,6 +455,7 @@ const Contact = () => {
                         value={formData.interestedIn}
                         onChange={handleChange}
                         className={inputClass}
+                        disabled={submitting}
                       >
                         <option value="">
                           Select an option
@@ -459,9 +505,9 @@ const Contact = () => {
 
                   </div>
 
-                  {/* Message */}
-                  <div>
+                  {/* MESSAGE */}
 
+                  <div>
                     <label className={labelClass}>
                       Message
                       <span className="ml-1 text-red-500">
@@ -477,27 +523,39 @@ const Contact = () => {
                       rows={5}
                       className={inputClass}
                       required
+                      disabled={submitting}
                     />
-
                   </div>
 
-                  {/* Submit */}
+                  {/* SUBMIT */}
+
                   <button
                     type="submit"
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-blue-700"
+                    disabled={submitting}
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-70"
                   >
-                    <Send size={18} />
-                    Send Message
+                    {submitting ? (
+                      <>
+                        <Loader2
+                          size={18}
+                          className="animate-spin"
+                        />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send size={18} />
+                        Send Message
+                      </>
+                    )}
                   </button>
 
                 </form>
-
               )}
 
             </div>
           </div>
         </section>
-
       </main>
 
       <Footer />
