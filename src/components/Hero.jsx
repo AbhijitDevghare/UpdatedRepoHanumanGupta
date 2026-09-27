@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Boxes, Building2 } from "lucide-react";
-import HeroImage from "../assets/heroImage.jpg";
+import HeroImage from "../assets/HeroImage.png";
 
 const originalHeroImage = HeroImage;
 
@@ -10,10 +10,10 @@ export default function Hero() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           <div className="lg:col-span-6 space-y-6">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-brand-darkblue text-xs font-semibold">
+            {/* <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-brand-darkblue text-xs font-semibold">
               <span className="w-2 h-2 rounded-full bg-brand-blue animate-pulse" />
               12+ Years of Technical Training Experience
-            </span>
+            </span> */}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-navy tracking-tight leading-tight">
               Industry-Relevant Training.
               <br />

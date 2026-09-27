@@ -9,6 +9,10 @@ import {
   CheckCircle2,
   Loader2,
   AlertCircle,
+  Clock3,
+  Building2,
+  GraduationCap,
+  Laptop,
 } from "lucide-react";
 
 import Navbar from "../components/Navbar";
@@ -47,10 +51,6 @@ const Contact = () => {
   |--------------------------------------------------------------------------
   | PREFILL FORM FROM URL
   |--------------------------------------------------------------------------
-  | Examples:
-  | /contact?type=corporate-training
-  | /contact?type=college-training
-  | /contact?type=lab
   */
 
   useEffect(() => {
@@ -92,7 +92,6 @@ const Contact = () => {
       [name]: value,
     }));
 
-    // Remove previous error when user starts typing again
     if (error) {
       setError("");
     }
@@ -198,7 +197,7 @@ const Contact = () => {
             HEADER
         ================================================================= */}
 
-        <section className="px-6 pb-10 pt-16 sm:px-10 lg:px-16">
+        {/* <section className="px-6 pb-10 pt-16 sm:px-10 lg:px-16">
           <div className="mx-auto max-w-5xl text-center">
             <p className="mb-3 text-sm font-semibold uppercase tracking-[0.2em] text-blue-600">
               Contact Us
@@ -209,17 +208,387 @@ const Contact = () => {
             </h1>
 
             <p className="mx-auto mt-4 max-w-2xl text-base leading-7 text-slate-600">
-              Choose the easiest way to reach us or send us a quick message.
+              Tell us what you’re looking for and our team will help you find
+              the right training, course, or learning solution.
             </p>
+          </div>
+        </section> */}
+
+        <br />
+
+        {/* ================================================================
+            MAIN FORM SECTION
+        ================================================================= */}
+
+        <section className="px-6 pb-16 sm:px-10 lg:px-16">
+          <div className="mx-auto max-w-6xl">
+            <div className="grid overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm lg:grid-cols-[0.85fr_1.15fr]">
+
+              {/* ==========================================================
+                  LEFT INFORMATION
+                  HIDDEN ON MOBILE AND TABLET
+              =========================================================== */}
+
+              <div className="hidden bg-slate-50 p-7 sm:p-10 lg:block lg:p-12">
+                <p className="text-sm font-semibold uppercase tracking-[0.15em] text-blue-600">
+                  Get In Touch
+                </p>
+
+                <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900">
+                  Tell Us How We Can Help
+                </h2>
+
+                <p className="mt-4 text-sm leading-7 text-slate-600">
+                  Whether you are looking for corporate training, college
+                  programs, individual courses, or hands-on IT labs, send us
+                  your requirements and we’ll get back to you.
+                </p>
+
+                {/* BENEFITS */}
+
+                <div className="mt-8 space-y-5">
+
+                  {/* QUICK RESPONSE */}
+
+                  <div className="flex items-start gap-4">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-100 text-blue-600">
+                      <Clock3 size={21} />
+                    </div>
+
+                    <div>
+                      <h3 className="text-sm font-semibold text-slate-900">
+                        Quick Response
+                      </h3>
+
+                      <p className="mt-1 text-sm leading-6 text-slate-500">
+                        Share your requirements and our team will get back to
+                        you.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* CORPORATE */}
+
+                  <div className="flex items-start gap-4">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-100 text-blue-600">
+                      <Building2 size={21} />
+                    </div>
+
+                    <div>
+                      <h3 className="text-sm font-semibold text-slate-900">
+                        Corporate Training
+                      </h3>
+
+                      <p className="mt-1 text-sm leading-6 text-slate-500">
+                        Training programs designed around organizational
+                        requirements.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* COLLEGE */}
+
+                  <div className="flex items-start gap-4">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-100 text-blue-600">
+                      <GraduationCap size={21} />
+                    </div>
+
+                    <div>
+                      <h3 className="text-sm font-semibold text-slate-900">
+                        College Training
+                      </h3>
+
+                      <p className="mt-1 text-sm leading-6 text-slate-500">
+                        Practical technical training for students and
+                        institutions.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* LABS */}
+
+                  <div className="flex items-start gap-4">
+                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-blue-100 text-blue-600">
+                      <Laptop size={21} />
+                    </div>
+
+                    <div>
+                      <h3 className="text-sm font-semibold text-slate-900">
+                        Hands-on IT Labs
+                      </h3>
+
+                      <p className="mt-1 text-sm leading-6 text-slate-500">
+                        Practice with real-world infrastructure and
+                        technologies.
+                      </p>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              {/* ==========================================================
+                  FORM
+              =========================================================== */}
+
+              <div className="p-6 sm:p-10 lg:p-12">
+
+                {/* SUCCESS MESSAGE */}
+
+                {submitted ? (
+                  <div className="flex min-h-[480px] flex-col items-center justify-center text-center">
+
+                    <div className="flex h-16 w-16 items-center justify-center rounded-full bg-green-50 text-green-600">
+                      <CheckCircle2 size={34} />
+                    </div>
+
+                    <h2 className="mt-6 text-2xl font-bold text-slate-900">
+                      Message Sent
+                    </h2>
+
+                    <p className="mt-3 max-w-md text-sm leading-6 text-slate-600">
+                      Thank you for contacting us. We’ve received your message
+                      and will get back to you soon.
+                    </p>
+
+                    <button
+                      type="button"
+                      onClick={handleSendAnother}
+                      className="mt-6 rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-700"
+                    >
+                      Send Another Message
+                    </button>
+                  </div>
+                ) : (
+                  <form
+                    onSubmit={handleSubmit}
+                    className="space-y-5"
+                  >
+
+                    {/* FORM TITLE */}
+
+                    <div className="mb-6">
+                      <h3 className="text-xl font-bold text-slate-900">
+                        Send Us a Message
+                      </h3>
+
+                      <p className="mt-1 text-sm text-slate-500">
+                        Fill in the details below and we’ll get in touch.
+                      </p>
+                    </div>
+
+                    {/* ERROR */}
+
+                    {error && (
+                      <div className="flex items-start gap-3 rounded-xl border border-red-200 bg-red-50 px-4 py-3.5 text-sm text-red-700">
+                        <AlertCircle
+                          size={19}
+                          className="mt-0.5 shrink-0"
+                        />
+
+                        <p>{error}</p>
+                      </div>
+                    )}
+
+                    {/* NAME + EMAIL */}
+
+                    <div className="grid gap-5 md:grid-cols-2">
+
+                      <div>
+                        <label className={labelClass}>
+                          Name
+                          <span className="ml-1 text-red-500">*</span>
+                        </label>
+
+                        <input
+                          type="text"
+                          name="fullName"
+                          value={formData.fullName}
+                          onChange={handleChange}
+                          placeholder="Your name"
+                          className={inputClass}
+                          required
+                          disabled={submitting}
+                        />
+                      </div>
+
+                      <div>
+                        <label className={labelClass}>
+                          Email
+                          <span className="ml-1 text-red-500">*</span>
+                        </label>
+
+                        <input
+                          type="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          placeholder="you@example.com"
+                          className={inputClass}
+                          required
+                          disabled={submitting}
+                        />
+                      </div>
+
+                    </div>
+
+                    {/* PHONE + INTERESTED IN */}
+
+                    <div className="grid gap-5 md:grid-cols-2">
+
+                      <div>
+                        <label className={labelClass}>
+                          Phone
+                        </label>
+
+                        <input
+                          type="tel"
+                          name="phone"
+                          value={formData.phone}
+                          onChange={handleChange}
+                          placeholder="+91 XXXXX XXXXX"
+                          className={inputClass}
+                          disabled={submitting}
+                        />
+                      </div>
+
+                      <div>
+                        <label className={labelClass}>
+                          Interested In
+                        </label>
+
+                        <select
+                          name="interestedIn"
+                          value={formData.interestedIn}
+                          onChange={handleChange}
+                          className={inputClass}
+                          disabled={submitting}
+                        >
+                          <option value="">
+                            Select an option
+                          </option>
+
+                          <option value="Corporate Training">
+                            Corporate Training
+                          </option>
+
+                          <option value="College Training">
+                            College Training
+                          </option>
+
+                          <option value="Individual Courses">
+                            Individual Courses
+                          </option>
+
+                          <option value="IT Labs">
+                            IT Labs
+                          </option>
+
+                          <option value="Networking">
+                            Networking
+                          </option>
+
+                          <option value="Cloud Computing">
+                            Cloud Computing
+                          </option>
+
+                          <option value="Linux">
+                            Linux
+                          </option>
+
+                          <option value="Windows Server">
+                            Windows Server
+                          </option>
+
+                          <option value="VMware & Virtualization">
+                            VMware & Virtualization
+                          </option>
+
+                          <option value="Other">
+                            Other
+                          </option>
+                        </select>
+                      </div>
+
+                    </div>
+
+                    {/* MESSAGE */}
+
+                    <div>
+                      <label className={labelClass}>
+                        Message
+                        <span className="ml-1 text-red-500">*</span>
+                      </label>
+
+                      <textarea
+                        name="message"
+                        value={formData.message}
+                        onChange={handleChange}
+                        placeholder="Tell us what you need..."
+                        rows={6}
+                        className={inputClass}
+                        required
+                        disabled={submitting}
+                      />
+                    </div>
+
+                    {/* SUBMIT */}
+
+                    <button
+                      type="submit"
+                      disabled={submitting}
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3.5 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-700 hover:shadow-md disabled:cursor-not-allowed disabled:opacity-70"
+                    >
+                      {submitting ? (
+                        <>
+                          <Loader2
+                            size={18}
+                            className="animate-spin"
+                          />
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          <Send size={18} />
+                          Send Message
+                        </>
+                      )}
+                    </button>
+
+                  </form>
+                )}
+
+              </div>
+            </div>
           </div>
         </section>
 
         {/* ================================================================
-            DIRECT CONTACT OPTIONS
+            OTHER CONTACT OPTIONS
         ================================================================= */}
 
-        <section className="px-6 pb-12 sm:px-10 lg:px-16">
-          <div className="mx-auto max-w-5xl">
+        <section className="px-6 pb-24 sm:px-10 lg:px-16">
+          <div className="mx-auto max-w-6xl">
+
+            {/* SECTION HEADER */}
+
+            <div className="mb-8 text-center">
+              <p className="text-sm font-semibold uppercase tracking-[0.15em] text-blue-600">
+                Other Ways to Reach Us
+              </p>
+
+              <h2 className="mt-2 text-2xl font-bold text-slate-900 sm:text-3xl">
+                Prefer to Contact Us Directly?
+              </h2>
+
+              <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-slate-600">
+                Choose any of the options below and reach us through your
+                preferred channel.
+              </p>
+            </div>
+
+            {/* CONTACT CARDS */}
+
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
 
               {/* WHATSAPP */}
@@ -234,9 +603,9 @@ const Contact = () => {
                   <MessageCircle size={27} strokeWidth={1.8} />
                 </div>
 
-                <h2 className="mt-4 text-base font-semibold text-slate-900">
+                <h3 className="mt-4 text-base font-semibold text-slate-900">
                   WhatsApp
-                </h2>
+                </h3>
 
                 <p className="mt-1 text-sm text-slate-500">
                   Chat with us
@@ -253,9 +622,9 @@ const Contact = () => {
                   <Mail size={27} strokeWidth={1.8} />
                 </div>
 
-                <h2 className="mt-4 text-base font-semibold text-slate-900">
+                <h3 className="mt-4 text-base font-semibold text-slate-900">
                   Email
-                </h2>
+                </h3>
 
                 <p className="mt-1 break-all text-sm text-slate-500">
                   {CONTACT.email}
@@ -272,9 +641,9 @@ const Contact = () => {
                   <Phone size={27} strokeWidth={1.8} />
                 </div>
 
-                <h2 className="mt-4 text-base font-semibold text-slate-900">
+                <h3 className="mt-4 text-base font-semibold text-slate-900">
                   Phone
-                </h2>
+                </h3>
 
                 <p className="mt-1 text-sm text-slate-500">
                   {CONTACT.phone}
@@ -301,257 +670,14 @@ const Contact = () => {
                   </svg>
                 </div>
 
-                <h2 className="mt-4 text-base font-semibold text-slate-900">
+                <h3 className="mt-4 text-base font-semibold text-slate-900">
                   LinkedIn
-                </h2>
+                </h3>
 
                 <p className="mt-1 text-sm text-slate-500">
                   Connect with us
                 </p>
               </a>
-            </div>
-          </div>
-        </section>
-
-        {/* ================================================================
-            FORM
-        ================================================================= */}
-
-        <section className="px-6 pb-24 sm:px-10 lg:px-16">
-          <div className="mx-auto max-w-3xl">
-
-            <div className="mb-7 text-center">
-              <p className="text-sm font-semibold uppercase tracking-[0.15em] text-blue-600">
-                Or Send a Message
-              </p>
-
-              <h2 className="mt-2 text-2xl font-bold text-slate-900 sm:text-3xl">
-                Tell Us How We Can Help
-              </h2>
-            </div>
-
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-
-              {/* ==========================================================
-                  SUCCESS MESSAGE
-              =========================================================== */}
-
-              {submitted ? (
-                <div className="flex min-h-[350px] flex-col items-center justify-center text-center">
-
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-green-50 text-green-600">
-                    <CheckCircle2 size={34} />
-                  </div>
-
-                  <h2 className="mt-6 text-2xl font-bold text-slate-900">
-                    Message Sent
-                  </h2>
-
-                  <p className="mt-3 max-w-md text-sm leading-6 text-slate-600">
-                    Thank you for contacting us. We’ve received your message
-                    and will get back to you soon.
-                  </p>
-
-                  <button
-                    type="button"
-                    onClick={handleSendAnother}
-                    className="mt-6 rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-700"
-                  >
-                    Send Another Message
-                  </button>
-                </div>
-              ) : (
-                <form
-                  onSubmit={handleSubmit}
-                  className="space-y-5"
-                >
-
-                  {/* ERROR */}
-
-                  {error && (
-                    <div className="flex items-start gap-3 rounded-xl border border-red-200 bg-red-50 px-4 py-3.5 text-sm text-red-700">
-                      <AlertCircle
-                        size={19}
-                        className="mt-0.5 shrink-0"
-                      />
-
-                      <p>{error}</p>
-                    </div>
-                  )}
-
-                  {/* NAME + EMAIL */}
-
-                  <div className="grid gap-5 md:grid-cols-2">
-
-                    <div>
-                      <label className={labelClass}>
-                        Name
-                        <span className="ml-1 text-red-500">
-                          *
-                        </span>
-                      </label>
-
-                      <input
-                        type="text"
-                        name="fullName"
-                        value={formData.fullName}
-                        onChange={handleChange}
-                        placeholder="Your name"
-                        className={inputClass}
-                        required
-                        disabled={submitting}
-                      />
-                    </div>
-
-                    <div>
-                      <label className={labelClass}>
-                        Email
-                        <span className="ml-1 text-red-500">
-                          *
-                        </span>
-                      </label>
-
-                      <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="you@example.com"
-                        className={inputClass}
-                        required
-                        disabled={submitting}
-                      />
-                    </div>
-
-                  </div>
-
-                  {/* PHONE + INTERESTED IN */}
-
-                  <div className="grid gap-5 md:grid-cols-2">
-
-                    <div>
-                      <label className={labelClass}>
-                        Phone
-                      </label>
-
-                      <input
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        placeholder="+91 XXXXX XXXXX"
-                        className={inputClass}
-                        disabled={submitting}
-                      />
-                    </div>
-
-                    <div>
-                      <label className={labelClass}>
-                        Interested In
-                      </label>
-
-                      <select
-                        name="interestedIn"
-                        value={formData.interestedIn}
-                        onChange={handleChange}
-                        className={inputClass}
-                        disabled={submitting}
-                      >
-                        <option value="">
-                          Select an option
-                        </option>
-
-                        <option value="Corporate Training">
-                          Corporate Training
-                        </option>
-
-                        <option value="College Training">
-                          College Training
-                        </option>
-
-                        <option value="Individual Courses">
-                          Individual Courses
-                        </option>
-
-                        <option value="IT Labs">
-                          IT Labs
-                        </option>
-
-                        <option value="Networking">
-                          Networking
-                        </option>
-
-                        <option value="Cloud Computing">
-                          Cloud Computing
-                        </option>
-
-                        <option value="Linux">
-                          Linux
-                        </option>
-
-                        <option value="Windows Server">
-                          Windows Server
-                        </option>
-
-                        <option value="VMware & Virtualization">
-                          VMware & Virtualization
-                        </option>
-
-                        <option value="Other">
-                          Other
-                        </option>
-                      </select>
-                    </div>
-
-                  </div>
-
-                  {/* MESSAGE */}
-
-                  <div>
-                    <label className={labelClass}>
-                      Message
-                      <span className="ml-1 text-red-500">
-                        *
-                      </span>
-                    </label>
-
-                    <textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      placeholder="Tell us what you need..."
-                      rows={5}
-                      className={inputClass}
-                      required
-                      disabled={submitting}
-                    />
-                  </div>
-
-                  {/* SUBMIT */}
-
-                  <button
-                    type="submit"
-                    disabled={submitting}
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-70"
-                  >
-                    {submitting ? (
-                      <>
-                        <Loader2
-                          size={18}
-                          className="animate-spin"
-                        />
-                        Sending...
-                      </>
-                    ) : (
-                      <>
-                        <Send size={18} />
-                        Send Message
-                      </>
-                    )}
-                  </button>
-
-                </form>
-              )}
 
             </div>
           </div>

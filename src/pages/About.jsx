@@ -182,30 +182,49 @@ export default function About() {
             HERO
         ================================================= */}
 
-        <section className="border-b border-blue-100 bg-white">
+        <section
+          className="relative overflow-hidden border-b border-blue-100 bg-white"
+          style={{
+            backgroundImage: `
+              linear-gradient(
+                to right,
+                rgba(37, 99, 235, 0.08) 1px,
+                transparent 1px
+              ),
+              linear-gradient(
+                to bottom,
+                rgba(37, 99, 235, 0.08) 1px,
+                transparent 1px
+              )
+            `,
+            backgroundSize: "50px 50px",
+          }}
+        >
 
-          <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24 lg:px-8 lg:py-28">
+          {/* Soft overlay */}
 
-            <div className="max-w-4xl">
+          <div className="absolute inset-0 bg-white/20" />
 
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-blue-600">
-                About NexusTech
-              </p>
+          <div className="relative mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
 
-              <h1 className="mt-5 text-4xl font-bold leading-tight tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
+            {/* HERO CONTENT */}
+
+            <div className="mx-auto max-w-4xl text-center">
+
+              <h1 className="text-4xl font-bold leading-tight tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
                 Technical training built
                 <span className="block text-blue-700">
                   around practical learning.
                 </span>
               </h1>
 
-              <p className="mt-7 max-w-3xl text-base leading-8 text-slate-600 sm:text-lg">
+              <p className="mx-auto mt-5 max-w-3xl text-base leading-7 text-slate-600 sm:text-lg">
                 NexusTech is a technical IT training institute focused on
                 practical learning across networking, systems, virtualization,
                 cloud computing and modern IT infrastructure.
               </p>
 
-              <p className="mt-4 max-w-3xl text-sm leading-7 text-slate-500 sm:text-base">
+              <p className="mx-auto mt-3 max-w-3xl text-sm leading-6 text-slate-500 sm:text-base">
                 We work with college students, IT professionals and
                 organizations through technical courses, instructor-led
                 training and hands-on virtual lab environments.
@@ -215,12 +234,13 @@ export default function About() {
 
             {/* INFORMATION STRIP */}
 
-            <div className="mt-12 grid border-t border-blue-100 pt-7 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mx-auto mt-8 grid max-w-6xl border-t border-blue-100/80 pt-5 text-center sm:grid-cols-2 lg:grid-cols-4">
 
               <div className="border-b border-blue-100 py-4 sm:border-r sm:px-6 lg:border-b-0">
                 <p className="text-sm font-semibold text-slate-950">
                   Technical Training
                 </p>
+
                 <p className="mt-1 text-xs text-slate-500">
                   Industry-focused learning
                 </p>
@@ -230,6 +250,7 @@ export default function About() {
                 <p className="text-sm font-semibold text-slate-950">
                   Practical Labs
                 </p>
+
                 <p className="mt-1 text-xs text-slate-500">
                   Learn by doing
                 </p>
@@ -239,6 +260,7 @@ export default function About() {
                 <p className="text-sm font-semibold text-slate-950">
                   Corporate Programs
                 </p>
+
                 <p className="mt-1 text-xs text-slate-500">
                   Customized training
                 </p>
@@ -248,6 +270,7 @@ export default function About() {
                 <p className="text-sm font-semibold text-slate-950">
                   College Programs
                 </p>
+
                 <p className="mt-1 text-xs text-slate-500">
                   Student-focused training
                 </p>
@@ -269,11 +292,7 @@ export default function About() {
 
             <div className="max-w-3xl">
 
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">
-                What We Do
-              </p>
-
-              <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+              <h2 className="text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
                 Training, labs and practical IT learning
               </h2>
 
@@ -318,6 +337,7 @@ export default function About() {
 
                     <div className="mt-6 flex items-center text-sm font-semibold text-blue-600">
                       Learn more
+
                       <ArrowRight
                         size={16}
                         className="ml-2 transition-transform duration-300 group-hover:translate-x-1"
@@ -346,11 +366,7 @@ export default function About() {
 
               <div>
 
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">
-                  Technologies
-                </p>
-
-                <h2 className="mt-4 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+                <h2 className="text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
                   What we teach
                 </h2>
 
@@ -365,7 +381,11 @@ export default function About() {
                   className="mt-7 inline-flex items-center text-sm font-semibold text-blue-600 transition hover:text-blue-800"
                 >
                   Browse courses
-                  <ArrowRight size={16} className="ml-2" />
+
+                  <ArrowRight
+                    size={16}
+                    className="ml-2"
+                  />
                 </Link>
 
               </div>
@@ -391,7 +411,10 @@ export default function About() {
                       <div className="flex items-center gap-4">
 
                         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-blue-100 text-blue-600 transition-all duration-300 group-hover:bg-blue-600 group-hover:text-white">
-                          <Icon size={20} strokeWidth={1.8} />
+                          <Icon
+                            size={20}
+                            strokeWidth={1.8}
+                          />
                         </div>
 
                         <h3 className="text-base font-bold text-slate-950">
@@ -426,11 +449,7 @@ export default function About() {
 
             <div className="max-w-3xl">
 
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">
-                Learning Approach
-              </p>
-
-              <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+              <h2 className="text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
                 From theory to practical skills
               </h2>
 
@@ -494,11 +513,7 @@ export default function About() {
 
               <div>
 
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-300">
-                  Virtual IT Labs
-                </p>
-
-                <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+                <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
                   Practice what you learn
                 </h2>
 
@@ -518,7 +533,11 @@ export default function About() {
                   className="mt-7 inline-flex items-center rounded-lg bg-white px-6 py-3.5 text-sm font-semibold text-brand-navy transition hover:bg-blue-50"
                 >
                   Explore IT Labs
-                  <ArrowRight size={17} className="ml-2" />
+
+                  <ArrowRight
+                    size={17}
+                    className="ml-2"
+                  />
                 </Link>
 
               </div>
@@ -537,7 +556,11 @@ export default function About() {
                     key={item}
                     className={`
                       flex items-center gap-3 border-b border-white/10 py-5
-                      ${index % 2 !== 0 ? "sm:border-l sm:pl-6" : "sm:pr-6"}
+                      ${
+                        index % 2 !== 0
+                          ? "sm:border-l sm:pl-6"
+                          : "sm:pr-6"
+                      }
                     `}
                   >
 
@@ -571,11 +594,7 @@ export default function About() {
 
             <div className="text-center">
 
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">
-                Who We Train
-              </p>
-
-              <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+              <h2 className="text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
                 Training for different IT needs
               </h2>
 
@@ -660,12 +679,9 @@ export default function About() {
 
               <div>
 
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-600">
-                  Founder & Trainer
-                </p>
-
-                <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
+                <h2 className="text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
                   Training shaped by
+
                   <span className="block text-blue-700">
                     real industry experience
                   </span>
@@ -723,10 +739,6 @@ export default function About() {
 
                 <div className="mt-9 border-t border-blue-100 pt-7">
 
-                  <p className="text-xs font-semibold uppercase tracking-wider text-blue-500">
-                    Training Experience
-                  </p>
-
                   <div className="mt-4 flex flex-wrap gap-x-5 gap-y-3">
 
                     {[
@@ -755,10 +767,6 @@ export default function About() {
 
                 <div className="mt-7 border-t border-blue-100 pt-7">
 
-                  <p className="text-xs font-semibold uppercase tracking-wider text-blue-500">
-                    Professional Certifications
-                  </p>
-
                   <div className="mt-4 flex flex-wrap gap-3">
 
                     <span className="rounded-lg border border-blue-100 px-4 py-2.5 text-sm font-medium text-slate-700">
@@ -780,7 +788,11 @@ export default function About() {
                   className="mt-7 inline-flex items-center text-sm font-semibold text-blue-600 transition hover:text-blue-800"
                 >
                   View Professional Profile
-                  <ArrowRight size={15} className="ml-2" />
+
+                  <ArrowRight
+                    size={15}
+                    className="ml-2"
+                  />
                 </a>
 
               </div>
@@ -801,11 +813,7 @@ export default function About() {
 
             <div className="px-6 py-14 sm:px-12 sm:py-16">
 
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-300">
-                NexusTech
-              </p>
-
-              <h2 className="mt-4 max-w-3xl text-3xl font-bold text-white sm:text-4xl">
+              <h2 className="max-w-3xl text-3xl font-bold text-white sm:text-4xl">
                 Practical learning for modern IT.
               </h2>
 
@@ -821,7 +829,11 @@ export default function About() {
                   className="inline-flex items-center justify-center rounded-lg bg-white px-6 py-3.5 text-sm font-semibold text-brand-navy transition hover:bg-blue-50"
                 >
                   Explore Courses
-                  <ArrowRight size={16} className="ml-2" />
+
+                  <ArrowRight
+                    size={16}
+                    className="ml-2"
+                  />
                 </Link>
 
                 <Link
@@ -829,7 +841,11 @@ export default function About() {
                   className="inline-flex items-center justify-center rounded-lg border border-blue-300 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-blue-800"
                 >
                   Contact Us
-                  <ArrowRight size={16} className="ml-2" />
+
+                  <ArrowRight
+                    size={16}
+                    className="ml-2"
+                  />
                 </Link>
 
               </div>
