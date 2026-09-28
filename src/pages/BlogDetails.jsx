@@ -17,7 +17,6 @@ export default function BlogDetails() {
 
   return (
     <>
-      {/* <TopBar /> */}
       <Navbar />
       <main>
         {blog ? (

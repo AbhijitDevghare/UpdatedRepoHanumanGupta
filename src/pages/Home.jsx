@@ -12,6 +12,8 @@ import TrainingExperiencePreview from "../components/TrainingExperiencePreview";
 import AlumniSlider from "../components/AluminiSlider";
 import FinalCTA from "../components/FinalCTA";
 import Footer from "../components/Footer";
+import FAQSection from "../components/FAQSection";
+import TopBar from "../components/TopBar";
 
 
 /* =========================================================
@@ -63,6 +65,7 @@ function AnimatedSection({ children }) {
 export default function Home() {
   return (
     <>
+      
       <Navbar />
 
       <main>
@@ -149,6 +152,7 @@ export default function Home() {
           <FinalCTA />
         </AnimatedSection>
 
+          <FAQSection/>
       </main>
 
       <Footer />

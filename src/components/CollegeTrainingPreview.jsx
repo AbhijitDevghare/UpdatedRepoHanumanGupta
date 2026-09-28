@@ -1,79 +1,115 @@
 import { Link } from "react-router-dom";
+import { ArrowRight, BookOpen, FlaskConical } from "lucide-react";
 
 import CollegeTraining1 from "../assets/training/college-training-1.png";
 
 export default function CollegeTrainingPreview() {
   return (
-    <section className="py-16 bg-white border-b border-slate-200">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="border-b border-slate-200 bg-white py-16 sm:py-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-        {/* Heading */}
-        <div className="text-center mb-8">
-          <span className="text-xs font-semibold uppercase tracking-widest text-indigo-600">
-            Higher Education
-          </span>
+        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
 
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-navy mt-2">
-            College Training
-          </h2>
-
-          <p className="text-slate-600 mt-3 max-w-xl mx-auto text-sm sm:text-base">
-            Practical IT training that connects classroom learning with
-            real-world skills.
-          </p>
-        </div>
-
-        {/* Single Training Image */}
-        <div className="max-w-5xl mx-auto">
-          <div className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-100">
+          {/* Image */}
+          <div className="overflow-hidden rounded-2xl border border-slate-200 bg-slate-100">
             <img
               src={CollegeTraining1}
               alt="College students participating in technical IT training"
-              className="w-full h-[320px] sm:h-[420px] object-cover transition-transform duration-500 group-hover:scale-105"
+              className="
+                h-[280px]
+                w-full
+                object-cover
+                transition-transform
+                duration-500
+                hover:scale-105
+                sm:h-[360px]
+                lg:h-[390px]
+              "
             />
+          </div>
 
-            {/* Subtle overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
+          {/* Content */}
+          <div>
+            <span className="text-xs font-semibold uppercase tracking-widest text-brand-blue">
+              For Colleges & Students
+            </span>
 
-            {/* Image label */}
-            <div className="absolute bottom-0 left-0 right-0 p-6">
-              <p className="text-lg font-semibold text-white">
-                Practical & Hands-on Technical Training
-              </p>
-              <p className="text-sm text-white/90 mt-1">
-                Industry-focused learning for college students
-              </p>
+            <h2 className="mt-3 text-3xl font-extrabold leading-tight text-brand-navy sm:text-4xl">
+              Bridge the gap between{" "}
+              <span className="text-brand-blue">
+                academics and industry.
+              </span>
+            </h2>
+
+            <p className="mt-5 max-w-xl text-base leading-7 text-slate-600">
+              Give students practical exposure to the technologies
+              and skills used in modern IT environments through
+              structured technical training.
+            </p>
+
+            {/* Key points */}
+            <div className="mt-6 space-y-4">
+
+              <div className="flex gap-3">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-brand-blue">
+                  <BookOpen size={18} />
+                </div>
+
+                <div>
+                  <h3 className="text-sm font-bold text-brand-navy">
+                    Industry-ready skills
+                  </h3>
+
+                  <p className="mt-1 text-sm text-slate-500">
+                    Training focused on relevant IT technologies.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-3">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-brand-blue">
+                  <FlaskConical size={18} />
+                </div>
+
+                <div>
+                  <h3 className="text-sm font-bold text-brand-navy">
+                    Hands-on practice
+                  </h3>
+
+                  <p className="mt-1 text-sm text-slate-500">
+                    Practical sessions built around real-world scenarios.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+
+            {/* CTA */}
+            <div className="mt-7">
+              <Link
+                to="/college-training"
+                className="
+                  inline-flex
+                  items-center
+                  gap-2
+                  rounded-lg
+                  bg-brand-navy
+                  px-5
+                  py-3
+                  text-sm
+                  font-semibold
+                  text-white
+                  transition
+                  hover:bg-brand-blue
+                "
+              >
+                Explore College Training
+                <ArrowRight size={16} />
+              </Link>
             </div>
           </div>
-        </div>
 
-        {/* Supporting line */}
-        <div className="mt-7 text-center">
-          <p className="text-sm text-slate-500">
-            Industry-focused • Practical • Hands-on
-          </p>
         </div>
-
-        {/* CTA */}
-        <div className="mt-6 text-center">
-          <Link
-            to="/college-training"
-            className="
-              inline-flex items-center
-              rounded-lg
-              bg-brand-navy
-              px-6 py-3
-              text-sm font-semibold
-              text-white
-              transition
-              hover:bg-brand-blue
-            "
-          >
-            Explore College Training
-            <span className="ml-2">→</span>
-          </Link>
-        </div>
-
       </div>
     </section>
   );

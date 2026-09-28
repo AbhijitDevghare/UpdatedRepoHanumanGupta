@@ -1,82 +1,105 @@
 import { Link } from "react-router-dom";
+import { ArrowRight, Building2, Settings2 } from "lucide-react";
 
 import CorporateTraining1 from "../assets/corporate-training/corporate-training-1.png";
 
 export default function CorporateTrainingPreview() {
   return (
-    <section className="py-16 bg-slate-50 border-b border-slate-200">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="border-b border-slate-200 bg-slate-50 py-16 sm:py-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
 
-        {/* Heading */}
-        <div className="text-center max-w-2xl mx-auto mb-8">
-          <span className="text-xs font-semibold uppercase tracking-widest text-brand-blue">
-            Enterprise Workforce
-          </span>
-
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-navy mt-2">
-            Corporate Training
-          </h2>
-
-          <p className="text-slate-600 mt-3 text-sm sm:text-base">
-            Practical technical training designed around organizational
-            requirements and real-world technology environments.
-          </p>
-        </div>
-
-        {/* Single Corporate Training Image */}
-        <div className="max-w-5xl mx-auto">
-          <div className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-
+          {/* Image */}
+          <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white">
             <img
               src={CorporateTraining1}
               alt="Corporate professionals participating in technical training"
-              className="w-full h-[320px] sm:h-[420px] object-cover transition-transform duration-500 group-hover:scale-105"
+              className="
+                h-[280px] w-full object-cover
+                transition-transform duration-500
+                hover:scale-105
+                sm:h-[360px]
+                lg:h-[390px]
+              "
             />
+          </div>
 
-            {/* Subtle overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
+          {/* Content */}
+          <div>
+            <span className="text-xs font-semibold uppercase tracking-widest text-brand-blue">
+              Corporate Training
+            </span>
 
-            {/* Image label */}
-            <div className="absolute bottom-0 left-0 right-0 p-6">
-              <p className="text-lg font-semibold text-white">
-                Professional Technical Training
-              </p>
+            <h2 className="mt-3 text-3xl font-extrabold leading-tight text-brand-navy sm:text-4xl">
+              Develop skills that{" "}
+              <span className="text-brand-blue">
+                drive your team forward.
+              </span>
+            </h2>
 
-              <p className="text-sm text-white/90 mt-1">
-                Upskilling teams with practical, industry-focused learning
-              </p>
+            <p className="mt-5 max-w-xl text-base leading-7 text-slate-600">
+              Practical technical training designed around your
+              organization’s requirements, technology environment,
+              and learning objectives.
+            </p>
+
+            {/* Training Benefits */}
+            <div className="mt-7 space-y-4">
+              <div className="flex gap-3">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-brand-blue">
+                  <Building2 size={18} />
+                </div>
+
+                <div>
+                  <h3 className="text-sm font-bold text-brand-navy">
+                    Built around your organization
+                  </h3>
+
+                  <p className="mt-1 text-sm leading-6 text-slate-500">
+                    Training can be aligned with your team’s roles,
+                    requirements, and technology environment.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-3">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-brand-blue">
+                  <Settings2 size={18} />
+                </div>
+
+                <div>
+                  <h3 className="text-sm font-bold text-brand-navy">
+                    Practical and technology-focused
+                  </h3>
+
+                  <p className="mt-1 text-sm leading-6 text-slate-500">
+                    Hands-on learning focused on technologies and
+                    real-world IT scenarios.
+                  </p>
+                </div>
+              </div>
             </div>
 
+            {/* CTA */}
+            <div className="mt-8">
+              <Link
+                to="/corporate-training"
+                className="
+                  inline-flex items-center gap-2
+                  rounded-lg bg-brand-navy
+                  px-5 py-3
+                  text-sm font-semibold text-white
+                  transition-colors duration-200
+                  hover:bg-brand-blue
+                "
+              >
+                Explore Corporate Training
+                <ArrowRight size={16} />
+              </Link>
+            </div>
           </div>
-        </div>
 
-        {/* Supporting line */}
-        <div className="mt-7 text-center">
-          <p className="text-sm text-slate-500">
-            Upskilling • Reskilling • Customized Training
-          </p>
         </div>
-
-        {/* CTA */}
-        <div className="text-center mt-6">
-          <Link
-            to="/corporate-training"
-            className="
-              inline-flex items-center
-              rounded-lg
-              bg-brand-navy
-              px-6 py-3
-              text-sm font-semibold
-              text-white
-              transition
-              hover:bg-brand-blue
-            "
-          >
-            Explore Corporate Training
-            <span className="ml-2">→</span>
-          </Link>
-        </div>
-
       </div>
     </section>
   );

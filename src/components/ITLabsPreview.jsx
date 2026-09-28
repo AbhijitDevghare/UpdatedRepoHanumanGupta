@@ -1,123 +1,114 @@
 import { Link } from "react-router-dom";
+import { ArrowRight, FlaskConical, Monitor, Wrench } from "lucide-react";
 
-import LabImage from "../assets/labs/networking.png";
+import LabImage from "../assets/homeImages/ITLabs.png";
 
 export default function ITLabsPreview() {
   return (
-    <section className="py-16 sm:py-20 bg-slate-50 border-b border-slate-200">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+    <section className="border-b border-slate-200 bg-slate-50 py-16 sm:py-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-14">
 
           {/* Image */}
-          <div className="relative group">
-            <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-              <img
-                src={LabImage}
-                alt="Virtual IT lab environment for hands-on technical practice"
-                className="
-                  w-full
-                  h-[300px]
-                  sm:h-[380px]
-                  object-cover
-                  transition-transform
-                  duration-500
-                  group-hover:scale-105
-                "
-              />
-            </div>
-
-            {/* Small floating label */}
-            <div className="
-              absolute
-              bottom-4
-              left-4
-              rounded-lg
-              bg-white/95
-              backdrop-blur-sm
-              border
-              border-slate-200
-              px-4
-              py-2
-              shadow-sm
-            ">
-              <p className="text-xs font-semibold text-brand-navy">
-                Hands-on IT Practice
-              </p>
-            </div>
+          <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white">
+            <img
+              src={LabImage}
+              alt="Virtual IT lab environment for hands-on technical practice"
+              className="
+                h-[280px] w-full object-cover
+                transition-transform duration-500
+                hover:scale-105
+                sm:h-[360px]
+                lg:h-[390px]
+              "
+            />
           </div>
 
           {/* Content */}
           <div>
 
-            <span className="text-xs font-semibold uppercase tracking-widest text-brand-blue">
-              Virtual IT Labs
-            </span>
-
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-navy mt-3">
-              Practice What You Learn
+            <h2 className="mt-3 text-3xl font-extrabold leading-tight text-brand-navy sm:text-4xl">
+              Learn by{" "}
+              <span className="text-brand-blue">
+                doing.
+              </span>
             </h2>
 
-            <p className="text-slate-600 mt-4 leading-7">
-              Get access to practical virtual environments where you can
-              configure, troubleshoot, and experiment with real IT
-              technologies.
+            <p className="mt-5 max-w-xl text-base leading-7 text-slate-600">
+              Practice your technical skills in virtual lab environments
+              designed for real-world IT training. Configure systems,
+              troubleshoot issues, and gain practical experience.
             </p>
 
-            {/* Technologies */}
-            <div className="flex flex-wrap gap-2 mt-6">
-              {[
-                "Networking",
-                "Linux",
-                "Windows Server",
-                "VMware",
-                "Cloud",
-              ].map((item) => (
-                <span
-                  key={item}
-                  className="
-                    rounded-full
-                    border
-                    border-slate-200
-                    bg-white
-                    px-4
-                    py-2
-                    text-sm
-                    font-medium
-                    text-slate-700
-                  "
-                >
-                  {item}
-                </span>
-              ))}
+            {/* Features */}
+            <div className="mt-7 space-y-4">
+              <div className="flex gap-3">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-brand-blue">
+                  <FlaskConical size={18} />
+                </div>
+
+                <div>
+                  <h3 className="text-sm font-bold text-brand-navy">
+                    Hands-on practice
+                  </h3>
+                  <p className="mt-1 text-sm text-slate-500">
+                    Work with practical IT scenarios instead of only
+                    learning theory.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-3">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-brand-blue">
+                  <Monitor size={18} />
+                </div>
+
+                <div>
+                  <h3 className="text-sm font-bold text-brand-navy">
+                    Real technology environments
+                  </h3>
+                  <p className="mt-1 text-sm text-slate-500">
+                    Practice across networking, Linux, Windows Server,
+                    VMware, and cloud technologies.
+                  </p>
+                </div>
+              </div>
+
+              <div className="flex gap-3">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-brand-blue">
+                  <Wrench size={18} />
+                </div>
+
+                <div>
+                  <h3 className="text-sm font-bold text-brand-navy">
+                    Configure & troubleshoot
+                  </h3>
+                  <p className="mt-1 text-sm text-slate-500">
+                    Build confidence by configuring systems and solving
+                    common technical problems.
+                  </p>
+                </div>
+              </div>
             </div>
 
             {/* CTA */}
-            <Link
-              to="/it-labs"
-              className="
-                inline-flex
-                items-center
-                mt-8
-                rounded-lg
-                bg-brand-navy
-                px-6
-                py-3.5
-                text-sm
-                font-semibold
-                text-white
-                transition
-                hover:bg-brand-blue
-              "
-            >
-              Explore IT Labs
-              <span className="ml-2">→</span>
-            </Link>
-
+            <div className="mt-8">
+              <Link
+                to="/it-labs"
+                className="
+                  inline-flex items-center gap-2 rounded-lg
+                  bg-brand-navy px-5 py-3 text-sm font-semibold
+                  text-white transition
+                  hover:bg-brand-blue
+                "
+              >
+                Explore IT Labs
+                <ArrowRight size={16} />
+              </Link>
+            </div>
           </div>
 
         </div>
-
       </div>
     </section>
   );

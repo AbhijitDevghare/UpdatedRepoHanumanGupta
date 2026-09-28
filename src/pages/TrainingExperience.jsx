@@ -198,7 +198,7 @@ function CollegeCards() {
 export default function TrainingExperience() {
   return (
     <>
-      {/* <TopBar /> */}
+    
       <Navbar />
       <main>
         <section className="relative overflow-hidden bg-brand-navy py-16 text-white lg:py-24">

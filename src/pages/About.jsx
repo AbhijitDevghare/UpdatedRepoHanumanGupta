@@ -1,13 +1,9 @@
 import {
   ArrowRight,
-  Building2,
-  Check,
+  Award,
   Cloud,
-  GraduationCap,
-  Laptop,
   Network,
   Server,
-  Terminal,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 
@@ -17,158 +13,61 @@ import Footer from "../components/Footer";
 import HanumanGupta from "../assets/trainer/HanumanGupta.png";
 
 /* =========================================================
-   WHAT WE DO
+   EXPERIENCE AREAS
 ========================================================= */
 
-const services = [
+const experienceAreas = [
   {
-    icon: GraduationCap,
-    title: "College Training",
-    description:
-      "Industry-oriented technical programs that connect academic learning with practical IT skills.",
-    link: "/college-training",
+    icon: Server,
+    title: "Enterprise Infrastructure",
   },
-  {
-    icon: Building2,
-    title: "Corporate Training",
-    description:
-      "Technical training designed around organizational requirements, teams and technology environments.",
-    link: "/corporate-training",
-  },
-  {
-    icon: Laptop,
-    title: "Virtual IT Labs",
-    description:
-      "Hands-on environments where learners can configure, test and troubleshoot real technology scenarios.",
-    link: "/it-labs",
-  },
-];
-
-/* =========================================================
-   TECHNOLOGY AREAS
-========================================================= */
-
-const technologyAreas = [
   {
     icon: Network,
     title: "Networking",
-    description:
-      "Routing, switching, VLANs, troubleshooting and enterprise networking concepts.",
   },
   {
     icon: Cloud,
     title: "Cloud Computing",
-    description:
-      "Cloud infrastructure, networking, services and administration across modern platforms.",
-  },
-  {
-    icon: Server,
-    title: "VMware & Virtualization",
-    description:
-      "Virtual machines, ESXi, vCenter and enterprise virtualization environments.",
-  },
-  {
-    icon: Terminal,
-    title: "Linux",
-    description:
-      "Linux administration, command line, permissions, services, networking and troubleshooting.",
-  },
-  {
-    icon: Server,
-    title: "Windows Server",
-    description:
-      "Server administration, Active Directory, DNS, DHCP, Group Policy and PowerShell.",
-  },
-  {
-    icon: Laptop,
-    title: "DevOps & Automation",
-    description:
-      "Modern infrastructure workflows, automation and tools used in contemporary IT environments.",
   },
 ];
 
 /* =========================================================
-   LEARNING APPROACH
+   TRAINER EXPERIENCE
 ========================================================= */
 
-const learningSteps = [
+const trainerExperience = [
   {
-    number: "01",
-    title: "Learn",
-    text:
-      "Understand the concepts, technologies and fundamentals before working with the environment.",
+    period: "2011 – 2014",
+    company: "Pearson Education India Pvt Ltd",
+    role: "IMS Trainer",
+    description:
+      "Technical training and learning support across IT technologies.",
   },
   {
-    number: "02",
-    title: "Practice",
-    text:
-      "Apply concepts through demonstrations, configurations and hands-on technical exercises.",
+    period: "2014 – 2015",
+    company: "Huawei Technologies",
+    role: "Training Manager",
+    description:
+      "Delivered training on cloud computing, routing & switching, storage, switches, routers and Wi-Fi technologies.",
   },
   {
-    number: "03",
-    title: "Troubleshoot",
-    text:
-      "Work through configuration problems and understand how systems behave when something goes wrong.",
+    period: "2015 – 2019",
+    company: "HCL Technologies",
+    role: "VMware Consultant",
+    description:
+      "Worked with VMware infrastructure and cloud computing environments, including vCenter and ESXi technologies.",
   },
   {
-    number: "04",
-    title: "Apply",
-    text:
-      "Connect technical knowledge with real-world infrastructure and professional IT environments.",
-  },
-];
-
-/* =========================================================
-   WHO WE TRAIN
-========================================================= */
-
-const audiences = [
-  {
-    title: "Students",
-    text:
-      "Build practical technical skills alongside academic learning and prepare for projects, internships and certifications.",
-  },
-  {
-    title: "IT Professionals",
-    text:
-      "Strengthen existing infrastructure skills or expand into new technologies and technical areas.",
-  },
-  {
-    title: "Organizations",
-    text:
-      "Upskill and reskill technical teams through focused and customized training programs.",
+    period: "2019 – Present",
+    company: "Self-Employed",
+    role: "Freelance Trainer – VMware & Cloud Computing",
+    description:
+      "Conducting VMware professional training for corporate and student batches along with Windows Server and infrastructure training.",
   },
 ];
 
 /* =========================================================
-   FOUNDER EXPERIENCE
-========================================================= */
-
-const founderExperience = [
-  {
-    title: "Enterprise Infrastructure",
-    text:
-      "Professional experience with VMware infrastructure, ESXi, vCenter, Nutanix, VBlock, servers, storage and data-center environments.",
-  },
-  {
-    title: "Cloud Computing",
-    text:
-      "Experience and training across cloud computing, Amazon AWS, Microsoft Azure and cloud infrastructure.",
-  },
-  {
-    title: "Networking",
-    text:
-      "Technical training covering CCNA, routing, switching and enterprise networking environments.",
-  },
-  {
-    title: "Technical Training",
-    text:
-      "Training experience across students, professionals, engineering institutions and corporate environments.",
-  },
-];
-
-/* =========================================================
-   MAIN COMPONENT
+   ABOUT PAGE
 ========================================================= */
 
 export default function About() {
@@ -176,621 +75,525 @@ export default function About() {
     <>
       <Navbar />
 
-      <main className="bg-white text-slate-900">
+      <main className="overflow-hidden bg-white text-slate-900">
 
         {/* =================================================
             HERO
         ================================================= */}
 
         <section
-          className="relative overflow-hidden border-b border-blue-100 bg-white"
-          style={{
-            backgroundImage: `
-              linear-gradient(
-                to right,
-                rgba(37, 99, 235, 0.08) 1px,
-                transparent 1px
-              ),
-              linear-gradient(
-                to bottom,
-                rgba(37, 99, 235, 0.08) 1px,
-                transparent 1px
-              )
-            `,
-            backgroundSize: "50px 50px",
-          }}
+          className="
+            relative overflow-hidden
+            border-b border-blue-100
+            bg-white
+            bg-[linear-gradient(to_right,rgba(59,130,246,0.045)_1px,transparent_1px),linear-gradient(to_bottom,rgba(59,130,246,0.045)_1px,transparent_1px)]
+            bg-[size:40px_40px]
+          "
         >
+          <div
+            className="
+              pointer-events-none absolute
+              right-[-180px] top-[-140px]
+              h-[550px] w-[650px]
+              rounded-full
+              bg-blue-100/30
+              blur-3xl
+            "
+          />
 
-          {/* Soft overlay */}
+          <div className="relative mx-auto max-w-7xl px-5 sm:px-8">
 
-          <div className="absolute inset-0 bg-white/20" />
+            <div
+              className="
+                grid items-center
+                lg:min-h-[470px]
+                lg:grid-cols-[0.95fr_1.05fr]
+              "
+            >
 
-          <div className="relative mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
+              {/* LEFT */}
 
-            {/* HERO CONTENT */}
+              <div
+                className="
+                  relative z-10
+                  max-w-xl
+                  py-12
+                  text-center
+                  lg:py-14
+                  lg:text-left
+                "
+              >
+                <h1
+                  className="
+                    text-4xl font-bold
+                    leading-tight tracking-tight
+                    text-slate-950
+                    sm:text-5xl
+                    lg:text-[54px]
+                  "
+                >
+                  Technology is better
+                  <span className="block text-brand-blue">
+                    when you understand it.
+                  </span>
+                </h1>
 
-            <div className="mx-auto max-w-4xl text-center">
-
-              <h1 className="text-4xl font-bold leading-tight tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
-                Technical training built
-                <span className="block text-blue-700">
-                  around practical learning.
-                </span>
-              </h1>
-
-              <p className="mx-auto mt-5 max-w-3xl text-base leading-7 text-slate-600 sm:text-lg">
-                NexusTech is a technical IT training institute focused on
-                practical learning across networking, systems, virtualization,
-                cloud computing and modern IT infrastructure.
-              </p>
-
-              <p className="mx-auto mt-3 max-w-3xl text-sm leading-6 text-slate-500 sm:text-base">
-                We work with college students, IT professionals and
-                organizations through technical courses, instructor-led
-                training and hands-on virtual lab environments.
-              </p>
-
-            </div>
-
-            {/* INFORMATION STRIP */}
-
-            <div className="mx-auto mt-8 grid max-w-6xl border-t border-blue-100/80 pt-5 text-center sm:grid-cols-2 lg:grid-cols-4">
-
-              <div className="border-b border-blue-100 py-4 sm:border-r sm:px-6 lg:border-b-0">
-                <p className="text-sm font-semibold text-slate-950">
-                  Technical Training
+                <p
+                  className="
+                    mx-auto mt-5
+                    max-w-lg
+                    text-base leading-7
+                    text-slate-600
+                    lg:mx-0
+                  "
+                >
+                  NexusTech brings together technical knowledge,
+                  industry experience and practical learning to help
+                  students, colleges and IT teams build relevant
+                  technical skills.
                 </p>
 
-                <p className="mt-1 text-xs text-slate-500">
-                  Industry-focused learning
-                </p>
-              </div>
-
-              <div className="border-b border-blue-100 py-4 sm:px-6 lg:border-r lg:border-b-0">
-                <p className="text-sm font-semibold text-slate-950">
-                  Practical Labs
-                </p>
-
-                <p className="mt-1 text-xs text-slate-500">
-                  Learn by doing
-                </p>
-              </div>
-
-              <div className="border-b border-blue-100 py-4 sm:border-r sm:px-6 lg:border-b-0">
-                <p className="text-sm font-semibold text-slate-950">
-                  Corporate Programs
-                </p>
-
-                <p className="mt-1 text-xs text-slate-500">
-                  Customized training
-                </p>
-              </div>
-
-              <div className="py-4 sm:px-6">
-                <p className="text-sm font-semibold text-slate-950">
-                  College Programs
-                </p>
-
-                <p className="mt-1 text-xs text-slate-500">
-                  Student-focused training
-                </p>
-              </div>
-
-            </div>
-
-          </div>
-
-        </section>
-
-        {/* =================================================
-            WHAT WE DO
-        ================================================= */}
-
-        <section className="border-b border-blue-100 bg-white py-20 sm:py-24">
-
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-
-            <div className="max-w-3xl">
-
-              <h2 className="text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
-                Training, labs and practical IT learning
-              </h2>
-
-              <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
-                NexusTech provides different learning environments depending
-                on the learner or organization's requirements.
-              </p>
-
-            </div>
-
-            <div className="mt-12 grid border-y border-blue-100 lg:grid-cols-3">
-
-              {services.map((service, index) => {
-                const Icon = service.icon;
-
-                return (
+                <div
+                  className="
+                    mt-6
+                    flex flex-col
+                    justify-center gap-3
+                    sm:flex-row
+                    lg:justify-start
+                  "
+                >
                   <Link
-                    key={service.title}
-                    to={service.link}
-                    className={`
-                      group p-7 transition-all duration-300
-                      hover:bg-blue-50/40
-                      ${
-                        index !== 0
-                          ? "border-t border-blue-100 lg:border-l lg:border-t-0"
-                          : ""
-                      }
-                    `}
+                    to="/courses"
+                    className="
+                      inline-flex items-center
+                      justify-center
+                      rounded-lg
+                      bg-brand-navy
+                      px-5 py-3
+                      text-sm font-semibold
+                      text-white
+                      transition
+                      hover:bg-brand-blue
+                    "
                   >
-
-                    <div className="flex h-11 w-11 items-center justify-center rounded-xl border border-blue-100 text-blue-600 transition-all duration-300 group-hover:bg-blue-600 group-hover:text-white">
-                      <Icon size={21} strokeWidth={1.8} />
-                    </div>
-
-                    <h3 className="mt-6 text-xl font-bold text-slate-950">
-                      {service.title}
-                    </h3>
-
-                    <p className="mt-3 text-sm leading-7 text-slate-600">
-                      {service.description}
-                    </p>
-
-                    <div className="mt-6 flex items-center text-sm font-semibold text-blue-600">
-                      Learn more
-
-                      <ArrowRight
-                        size={16}
-                        className="ml-2 transition-transform duration-300 group-hover:translate-x-1"
-                      />
-                    </div>
-
+                    Explore Courses
+                    <ArrowRight size={16} className="ml-2" />
                   </Link>
-                );
-              })}
+
+                  <Link
+                    to="/contact"
+                    className="
+                      inline-flex items-center
+                      justify-center
+                      rounded-lg
+                      border border-slate-300
+                      bg-white
+                      px-5 py-3
+                      text-sm font-semibold
+                      text-slate-700
+                      transition
+                      hover:border-blue-300
+                      hover:text-brand-blue
+                    "
+                  >
+                    Contact Us
+                  </Link>
+                </div>
+              </div>
+
+              {/* RIGHT */}
+
+              <div
+                className="
+                  relative hidden
+                  min-h-[400px]
+                  lg:flex
+                  lg:items-center
+                  lg:justify-end
+                "
+              >
+                <div className="relative h-[350px] w-[430px]">
+
+                  {/* CONNECTION LINES */}
+
+                  <div
+                    className="
+                      absolute left-[105px] top-[175px]
+                      h-px w-[105px]
+                      bg-blue-200
+                    "
+                  />
+
+                  <div
+                    className="
+                      absolute right-[105px] top-[115px]
+                      h-px w-[90px]
+                      rotate-[25deg]
+                      bg-blue-200
+                    "
+                  />
+
+                  <div
+                    className="
+                      absolute bottom-[95px] right-[105px]
+                      h-px w-[90px]
+                      -rotate-[25deg]
+                      bg-blue-200
+                    "
+                  />
+
+                  {/* CENTER */}
+
+                  <div
+                    className="
+                      absolute left-1/2 top-1/2
+                      flex h-32 w-32
+                      -translate-x-1/2
+                      -translate-y-1/2
+                      items-center justify-center
+                      rounded-full
+                      bg-brand-navy
+                      shadow-[0_20px_55px_rgba(15,23,42,0.16)]
+                    "
+                  >
+                    <div className="text-center">
+                      <div className="text-5xl font-bold text-white">
+                        N
+                      </div>
+
+                      <div
+                        className="
+                          mt-1 text-[9px]
+                          font-bold uppercase
+                          tracking-[0.25em]
+                          text-blue-200
+                        "
+                      >
+                        NexusTech
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* NETWORK */}
+
+                  <div
+                    className="
+                      absolute left-3 top-[135px]
+                      flex h-20 w-20
+                      items-center justify-center
+                      rounded-2xl
+                      border border-blue-100
+                      bg-white
+                      shadow-[0_10px_30px_rgba(15,23,42,0.07)]
+                    "
+                  >
+                    <Network
+                      size={29}
+                      className="text-brand-blue"
+                    />
+                  </div>
+
+                  {/* CLOUD */}
+
+                  <div
+                    className="
+                      absolute right-5 top-[45px]
+                      flex h-20 w-20
+                      items-center justify-center
+                      rounded-2xl
+                      border border-blue-100
+                      bg-white
+                      shadow-[0_10px_30px_rgba(15,23,42,0.07)]
+                    "
+                  >
+                    <Cloud
+                      size={29}
+                      className="text-brand-blue"
+                    />
+                  </div>
+
+                  {/* SERVER */}
+
+                  <div
+                    className="
+                      absolute bottom-[30px] right-[38px]
+                      flex h-20 w-20
+                      items-center justify-center
+                      rounded-2xl
+                      border border-blue-100
+                      bg-white
+                      shadow-[0_10px_30px_rgba(15,23,42,0.07)]
+                    "
+                  >
+                    <Server
+                      size={29}
+                      className="text-brand-blue"
+                    />
+                  </div>
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
+        {/* =================================================
+            ABOUT NEXUSTECH
+        ================================================= */}
+
+        <section className="border-b border-slate-200 bg-white py-12 sm:py-14">
+          <div className="mx-auto max-w-6xl px-5 sm:px-8">
+
+            <div className="grid gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:gap-14">
+
+              <div>
+                <h2 className="text-3xl font-bold tracking-tight text-slate-950">
+                  About NexusTech
+                </h2>
+              </div>
+
+              <div className="max-w-3xl">
+
+                <p className="text-base leading-7 text-slate-600">
+                  NexusTech focuses on practical technical training
+                  across modern IT infrastructure and related
+                  technologies. Our approach connects technical
+                  concepts with practical environments so learners
+                  can understand how technologies are actually used.
+                </p>
+
+                <p className="mt-4 text-base leading-7 text-slate-600">
+                  We work with colleges, students and organizations,
+                  providing training that can be structured around
+                  specific technologies, learning objectives and
+                  practical requirements.
+                </p>
+
+                <div className="mt-7 grid gap-3 sm:grid-cols-3">
+
+                  {experienceAreas.map((item) => {
+                    const Icon = item.icon;
+
+                    return (
+                      <div
+                        key={item.title}
+                        className="
+                          rounded-xl
+                          border border-slate-200
+                          bg-slate-50
+                          p-4
+                        "
+                      >
+                        <Icon
+                          size={20}
+                          className="text-brand-blue"
+                        />
+
+                        <p className="mt-3 text-sm font-semibold leading-5 text-slate-800">
+                          {item.title}
+                        </p>
+                      </div>
+                    );
+                  })}
+
+                </div>
+
+              </div>
 
             </div>
 
           </div>
-
         </section>
 
         {/* =================================================
-            TECHNOLOGY AREAS
+            TRAINER
         ================================================= */}
 
-        <section className="border-b border-blue-100 bg-white py-20 sm:py-24">
+        <section className="border-b border-slate-200 bg-slate-50 py-12 sm:py-14">
+          <div className="mx-auto max-w-6xl px-5 sm:px-8">
 
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div className="grid items-center gap-8 lg:grid-cols-[220px_1fr] lg:gap-12">
 
-            <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr]">
+              {/* PHOTO */}
+
+              <div>
+
+                <div className="overflow-hidden rounded-xl border border-slate-200 bg-white">
+                  <img
+                    src={HanumanGupta}
+                    alt="HP Gupta - Founder and Technical Trainer"
+                    className="
+                      h-[270px]
+                      w-full
+                      object-cover
+                      object-top
+                    "
+                    loading="lazy"
+                  />
+                </div>
+
+                <div className="mt-4">
+                  <h3 className="text-lg font-bold text-slate-950">
+                    HP Gupta
+                  </h3>
+
+                  <p className="mt-1 text-sm font-medium text-brand-blue">
+                    Founder & Technical Trainer
+                  </p>
+                </div>
+
+              </div>
+
+              {/* CONTENT */}
 
               <div>
 
                 <h2 className="text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
-                  What we teach
+                  Experience across
+                  <span className="text-brand-blue">
+                    {" "}industry and training.
+                  </span>
                 </h2>
 
-                <p className="mt-5 max-w-md text-sm leading-7 text-slate-600 sm:text-base">
-                  Our training focuses on technologies used across
-                  networking, systems, virtualization, cloud and enterprise
-                  IT environments.
+                <p className="mt-4 max-w-2xl text-base leading-7 text-slate-600">
+                  HP Gupta has experience across VMware, cloud
+                  computing, networking, enterprise infrastructure
+                  and technical training, with a career spanning
+                  both industry and professional education.
                 </p>
 
-                <Link
-                  to="/courses"
-                  className="mt-7 inline-flex items-center text-sm font-semibold text-blue-600 transition hover:text-blue-800"
-                >
-                  Browse courses
+                {/* EXPERIENCE TIMELINE */}
 
-                  <ArrowRight
-                    size={16}
-                    className="ml-2"
-                  />
-                </Link>
+                <div className="mt-7 space-y-0">
 
-              </div>
-
-              <div className="grid border-t border-blue-100 sm:grid-cols-2 sm:border-t-0">
-
-                {technologyAreas.map((area, index) => {
-                  const Icon = area.icon;
-
-                  return (
+                  {trainerExperience.map((item, index) => (
                     <div
-                      key={area.title}
-                      className={`
-                        group border-b border-blue-100 p-6
-                        ${
-                          index % 2 !== 0
-                            ? "sm:border-l"
-                            : ""
-                        }
-                      `}
+                      key={`${item.company}-${item.role}`}
+                      className="
+                        relative
+                        grid grid-cols-[92px_1fr]
+                        gap-4
+                        pb-6
+                        last:pb-0
+                      "
                     >
 
-                      <div className="flex items-center gap-4">
+                      {/* LINE */}
 
-                        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-blue-100 text-blue-600 transition-all duration-300 group-hover:bg-blue-600 group-hover:text-white">
-                          <Icon
-                            size={20}
-                            strokeWidth={1.8}
-                          />
-                        </div>
+                      {index !== trainerExperience.length - 1 && (
+                        <div
+                          className="
+                            absolute
+                            left-[4px]
+                            top-[22px]
+                            h-[calc(100%-2px)]
+                            w-px
+                            bg-slate-200
+                          "
+                        />
+                      )}
 
-                        <h3 className="text-base font-bold text-slate-950">
-                          {area.title}
-                        </h3>
+                      {/* DOT / YEAR */}
+
+                      <div className="relative">
+
+                        <div
+                          className="
+                            relative z-10
+                            flex h-2.5 w-2.5
+                            translate-y-1
+                            rounded-full
+                            bg-brand-blue
+                          "
+                        />
+
+                        <p className="mt-2 text-xs font-semibold text-slate-500">
+                          {item.period}
+                        </p>
 
                       </div>
 
-                      <p className="mt-4 text-sm leading-6 text-slate-600">
-                        {area.description}
-                      </p>
+                      {/* DETAILS */}
 
-                    </div>
-                  );
-                })}
+                      <div>
 
-              </div>
+                        <h3 className="text-base font-bold text-slate-950">
+                          {item.role}
+                        </h3>
 
-            </div>
+                        <p className="mt-0.5 text-sm font-medium text-brand-blue">
+                          {item.company}
+                        </p>
 
-          </div>
+                        <p className="mt-1.5 text-sm leading-6 text-slate-600">
+                          {item.description}
+                        </p>
 
-        </section>
-
-        {/* =================================================
-            HOW WE TEACH
-        ================================================= */}
-
-        <section className="border-b border-blue-100 bg-white py-20 sm:py-24">
-
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-
-            <div className="max-w-3xl">
-
-              <h2 className="text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
-                From theory to practical skills
-              </h2>
-
-              <p className="mt-4 max-w-2xl text-sm leading-7 text-slate-600 sm:text-base">
-                The goal is not simply to explain a technology, but to help
-                learners understand how to work with it.
-              </p>
-
-            </div>
-
-            <div className="mt-12 grid border-y border-blue-100 md:grid-cols-2 lg:grid-cols-4">
-
-              {learningSteps.map((step, index) => (
-                <div
-                  key={step.number}
-                  className={`
-                    p-7
-                    ${
-                      index !== 0
-                        ? "border-t border-blue-100 md:border-l md:border-t-0"
-                        : ""
-                    }
-                    ${
-                      index === 2
-                        ? "lg:border-l"
-                        : ""
-                    }
-                  `}
-                >
-
-                  <span className="text-sm font-bold text-blue-600">
-                    {step.number}
-                  </span>
-
-                  <h3 className="mt-3 text-xl font-bold text-slate-950">
-                    {step.title}
-                  </h3>
-
-                  <p className="mt-3 text-sm leading-6 text-slate-600">
-                    {step.text}
-                  </p>
-
-                </div>
-              ))}
-
-            </div>
-
-          </div>
-
-        </section>
-
-        {/* =================================================
-            IT LABS
-        ================================================= */}
-
-        <section className="bg-brand-navy py-20 sm:py-24">
-
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-
-            <div className="grid items-center gap-12 lg:grid-cols-2">
-
-              <div>
-
-                <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-                  Practice what you learn
-                </h2>
-
-                <p className="mt-5 text-sm leading-7 text-blue-100 sm:text-base">
-                  Our virtual IT labs provide practical environments where
-                  learners can configure systems, test different setups,
-                  experiment and troubleshoot technical problems.
-                </p>
-
-                <p className="mt-4 text-sm leading-7 text-blue-200 sm:text-base">
-                  Labs can be used alongside courses, workshops, individual
-                  practice and organization-specific training.
-                </p>
-
-                <Link
-                  to="/it-labs"
-                  className="mt-7 inline-flex items-center rounded-lg bg-white px-6 py-3.5 text-sm font-semibold text-brand-navy transition hover:bg-blue-50"
-                >
-                  Explore IT Labs
-
-                  <ArrowRight
-                    size={17}
-                    className="ml-2"
-                  />
-                </Link>
-
-              </div>
-
-              <div className="grid sm:grid-cols-2">
-
-                {[
-                  "Networking",
-                  "Linux",
-                  "Windows Server",
-                  "VMware",
-                  "Cloud",
-                  "Troubleshooting",
-                ].map((item, index) => (
-                  <div
-                    key={item}
-                    className={`
-                      flex items-center gap-3 border-b border-white/10 py-5
-                      ${
-                        index % 2 !== 0
-                          ? "sm:border-l sm:pl-6"
-                          : "sm:pr-6"
-                      }
-                    `}
-                  >
-
-                    <Check
-                      size={17}
-                      className="shrink-0 text-blue-300"
-                    />
-
-                    <span className="text-sm font-medium text-white">
-                      {item}
-                    </span>
-
-                  </div>
-                ))}
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </section>
-
-        {/* =================================================
-            WHO WE TRAIN
-        ================================================= */}
-
-        <section className="border-b border-blue-100 bg-white py-20 sm:py-24">
-
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-
-            <div className="text-center">
-
-              <h2 className="text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
-                Training for different IT needs
-              </h2>
-
-            </div>
-
-            <div className="mt-12 grid border-y border-blue-100 md:grid-cols-3">
-
-              {audiences.map((audience, index) => (
-                <div
-                  key={audience.title}
-                  className={`
-                    p-7
-                    ${
-                      index !== 0
-                        ? "border-t border-blue-100 md:border-l md:border-t-0"
-                        : ""
-                    }
-                  `}
-                >
-
-                  <span className="text-xs font-bold uppercase tracking-wider text-blue-600">
-                    0{index + 1}
-                  </span>
-
-                  <h3 className="mt-4 text-xl font-bold text-slate-950">
-                    {audience.title}
-                  </h3>
-
-                  <p className="mt-3 text-sm leading-7 text-slate-600">
-                    {audience.text}
-                  </p>
-
-                </div>
-              ))}
-
-            </div>
-
-          </div>
-
-        </section>
-
-        {/* =================================================
-            FOUNDER & TRAINER
-        ================================================= */}
-
-        <section className="border-b border-blue-100 bg-white py-20 sm:py-24">
-
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-
-            <div className="grid items-start gap-12 lg:grid-cols-[300px_1fr]">
-
-              {/* FOUNDER IMAGE */}
-
-              <div>
-
-                <div className="overflow-hidden rounded-2xl border border-blue-100 bg-white">
-
-                  <img
-                    src={HanumanGupta}
-                    alt="Hanuman Gupta - Founder and Technical Trainer"
-                    className="h-[370px] w-full object-cover"
-                    loading="lazy"
-                  />
-
-                </div>
-
-                <div className="mt-5">
-
-                  <h3 className="text-xl font-bold text-slate-950">
-                    Hanuman Gupta
-                  </h3>
-
-                  <p className="mt-1 text-sm font-medium text-blue-600">
-                    Founder & Technical Trainer
-                  </p>
-
-                </div>
-
-              </div>
-
-              {/* FOUNDER CONTENT */}
-
-              <div>
-
-                <h2 className="text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl">
-                  Training shaped by
-
-                  <span className="block text-blue-700">
-                    real industry experience
-                  </span>
-                </h2>
-
-                <p className="mt-5 text-sm leading-7 text-slate-600 sm:text-base">
-                  Hanuman Gupta is the founder and technical trainer behind
-                  NexusTech. His professional background combines enterprise
-                  infrastructure experience with technical training across
-                  VMware, cloud computing, networking and systems.
-                </p>
-
-                <p className="mt-4 text-sm leading-7 text-slate-600 sm:text-base">
-                  His experience includes working with enterprise
-                  infrastructure and delivering technical training for
-                  students, professionals and corporate environments.
-                </p>
-
-                {/* EXPERIENCE */}
-
-                <div className="mt-9 grid border-y border-blue-100 sm:grid-cols-2">
-
-                  {founderExperience.map((item, index) => (
-                    <div
-                      key={item.title}
-                      className={`
-                        p-5
-                        ${
-                          index > 1
-                            ? "border-t border-blue-100"
-                            : ""
-                        }
-                        ${
-                          index % 2 !== 0
-                            ? "sm:border-l"
-                            : ""
-                        }
-                      `}
-                    >
-
-                      <h3 className="text-sm font-bold text-slate-950">
-                        {item.title}
-                      </h3>
-
-                      <p className="mt-2 text-sm leading-6 text-slate-600">
-                        {item.text}
-                      </p>
+                      </div>
 
                     </div>
                   ))}
 
                 </div>
 
-                {/* TRAINING TECHNOLOGIES */}
+                {/* CREDENTIALS */}
 
-                <div className="mt-9 border-t border-blue-100 pt-7">
+                <div className="mt-7 flex flex-wrap gap-3">
 
-                  <div className="mt-4 flex flex-wrap gap-x-5 gap-y-3">
-
-                    {[
-                      "VMware",
-                      "AWS",
-                      "Azure",
-                      "Nutanix",
-                      "CCNA",
-                      "Windows Server",
-                      "Cloud Computing",
-                      "Routing & Switching",
-                    ].map((item) => (
-                      <span
-                        key={item}
-                        className="text-sm font-medium text-slate-700"
-                      >
-                        {item}
-                      </span>
-                    ))}
-
+                  <div
+                    className="
+                      inline-flex items-center gap-2
+                      rounded-lg
+                      border border-slate-200
+                      bg-white
+                      px-4 py-2.5
+                      text-sm font-medium
+                      text-slate-700
+                    "
+                  >
+                    <Award
+                      size={16}
+                      className="text-brand-blue"
+                    />
+                    Nutanix Certified Professional
                   </div>
 
-                </div>
-
-                {/* CERTIFICATIONS */}
-
-                <div className="mt-7 border-t border-blue-100 pt-7">
-
-                  <div className="mt-4 flex flex-wrap gap-3">
-
-                    <span className="rounded-lg border border-blue-100 px-4 py-2.5 text-sm font-medium text-slate-700">
-                      Nutanix Certified Professional
-                    </span>
-
-                    <span className="rounded-lg border border-blue-100 px-4 py-2.5 text-sm font-medium text-slate-700">
-                      Microsoft Certified: Azure Administrator Associate
-                    </span>
-
+                  <div
+                    className="
+                      inline-flex items-center gap-2
+                      rounded-lg
+                      border border-slate-200
+                      bg-white
+                      px-4 py-2.5
+                      text-sm font-medium
+                      text-slate-700
+                    "
+                  >
+                    <Award
+                      size={16}
+                      className="text-brand-blue"
+                    />
+                    Azure Administrator Associate
                   </div>
 
                 </div>
 
                 <a
-                  href="https://www.linkedin.com/in/hanuman-pd-gupta-578350249/"
+                  href="https://www.linkedin.com/in/hp-gupta-11076961/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-7 inline-flex items-center text-sm font-semibold text-blue-600 transition hover:text-blue-800"
+                  className="
+                    mt-6 inline-flex items-center
+                    text-sm font-semibold
+                    text-brand-blue
+                    transition
+                    hover:text-blue-800
+                  "
                 >
-                  View Professional Profile
-
+                  View LinkedIn Profile
                   <ArrowRight
-                    size={15}
+                    size={16}
                     className="ml-2"
                   />
                 </a>
@@ -800,60 +603,137 @@ export default function About() {
             </div>
 
           </div>
-
         </section>
 
         {/* =================================================
-            FINAL CTA
+            COLLEGES / ORGANIZATIONS
         ================================================= */}
 
-        <section className="bg-white px-4 py-20 sm:px-6 lg:px-8">
+        <section className="border-b border-slate-200 bg-white py-12 sm:py-14">
+          <div className="mx-auto max-w-6xl px-5 sm:px-8">
 
-          <div className="mx-auto max-w-6xl overflow-hidden rounded-2xl bg-brand-navy">
+            <div className="grid gap-4 md:grid-cols-2">
 
-            <div className="px-6 py-14 sm:px-12 sm:py-16">
+              {/* COLLEGES */}
 
-              <h2 className="max-w-3xl text-3xl font-bold text-white sm:text-4xl">
-                Practical learning for modern IT.
-              </h2>
+              <div
+                className="
+                  rounded-xl
+                  border border-slate-200
+                  bg-white
+                  p-6
+                "
+              >
+                <h2 className="text-xl font-bold text-slate-950">
+                  For Colleges
+                </h2>
 
-              <p className="mt-4 max-w-2xl text-sm leading-7 text-blue-100 sm:text-base">
-                Explore our courses, practical labs and training programs
-                built around real IT technologies.
-              </p>
-
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <p className="mt-3 text-sm leading-6 text-slate-600">
+                  Practical technical programs designed to help
+                  students gain exposure to industry-relevant
+                  technologies and hands-on learning.
+                </p>
 
                 <Link
-                  to="/courses"
-                  className="inline-flex items-center justify-center rounded-lg bg-white px-6 py-3.5 text-sm font-semibold text-brand-navy transition hover:bg-blue-50"
+                  to="/college-training"
+                  className="
+                    mt-5 inline-flex items-center
+                    text-sm font-semibold
+                    text-brand-blue
+                  "
                 >
-                  Explore Courses
-
+                  College Training
                   <ArrowRight
-                    size={16}
+                    size={15}
                     className="ml-2"
                   />
                 </Link>
+              </div>
+
+              {/* ORGANIZATIONS */}
+
+              <div
+                className="
+                  rounded-xl
+                  border border-slate-200
+                  bg-white
+                  p-6
+                "
+              >
+                <h2 className="text-xl font-bold text-slate-950">
+                  For Organizations
+                </h2>
+
+                <p className="mt-3 text-sm leading-6 text-slate-600">
+                  Technical training that can be structured around
+                  your team's technologies, roles and learning
+                  requirements.
+                </p>
 
                 <Link
-                  to="/contact"
-                  className="inline-flex items-center justify-center rounded-lg border border-blue-300 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-blue-800"
+                  to="/corporate-training"
+                  className="
+                    mt-5 inline-flex items-center
+                    text-sm font-semibold
+                    text-brand-blue
+                  "
                 >
-                  Contact Us
-
+                  Corporate Training
                   <ArrowRight
-                    size={16}
+                    size={15}
                     className="ml-2"
                   />
                 </Link>
-
               </div>
 
             </div>
 
           </div>
+        </section>
 
+        {/* =================================================
+            CTA
+        ================================================= */}
+
+        <section className="bg-brand-navy">
+          <div className="mx-auto max-w-6xl px-5 py-10 sm:px-8">
+
+            <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+
+              <div>
+                <h2 className="text-2xl font-bold text-white">
+                  Let's discuss your training requirements.
+                </h2>
+
+                <p className="mt-1.5 text-sm text-blue-100">
+                  Courses, college programs and corporate training.
+                </p>
+              </div>
+
+              <Link
+                to="/contact"
+                className="
+                  inline-flex shrink-0
+                  items-center justify-center
+                  rounded-lg
+                  bg-white
+                  px-5 py-3
+                  text-sm font-semibold
+                  text-brand-navy
+                  transition
+                  hover:bg-blue-50
+                "
+              >
+                Contact Us
+                <ArrowRight
+                  size={16}
+                  className="ml-2"
+                />
+              </Link>
+
+            </div>
+
+          </div>
         </section>
 
       </main>

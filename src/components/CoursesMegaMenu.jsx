@@ -15,25 +15,8 @@ export default function CoursesMegaMenu({
 }) {
   const [openCategory, setOpenCategory] = useState(null);
 
-  /*
-   * ---------------------------------------------------------
-   * GROUP COURSES BY CATEGORY
-   * ---------------------------------------------------------
-   */
-
-  const groupedCourses = courses.reduce((groups, course) => {
-    const category = course.category || "Other";
-
-    if (!groups[category]) {
-      groups[category] = [];
-    }
-
-    groups[category].push(course);
-
-    return groups;
-  }, {});
-
-  const categories = Object.entries(groupedCourses);
+  // courses already contains categories and their courses
+  const categories = courses;
 
   /*
    * ---------------------------------------------------------
@@ -69,22 +52,22 @@ export default function CoursesMegaMenu({
           />
         </button>
 
-        {/* Main Mobile Dropdown */}
+        {/* Mobile Categories */}
         {mobileOpen && (
           <div className="mt-1 ml-3 border-l border-slate-200 pl-3">
 
-            {categories.map(([category, categoryCourses]) => {
-              const isOpen = openCategory === category;
+            {categories.map((category) => {
+              const isOpen = openCategory === category.slug;
 
               return (
-                <div key={category} className="mb-1">
+                <div key={category.slug} className="mb-1">
 
                   {/* Category Button */}
                   <button
                     type="button"
                     onClick={() =>
                       setOpenCategory(
-                        isOpen ? null : category
+                        isOpen ? null : category.slug
                       )
                     }
                     aria-expanded={isOpen}
@@ -97,7 +80,7 @@ export default function CoursesMegaMenu({
                       hover:text-brand-blue
                     "
                   >
-                    <span>{category}</span>
+                    <span>{category.category}</span>
 
                     <ChevronRight
                       size={15}
@@ -109,11 +92,11 @@ export default function CoursesMegaMenu({
                     />
                   </button>
 
-                  {/* Nested Courses */}
+                  {/* Courses */}
                   {isOpen && (
                     <div className="ml-3 border-l border-slate-100 pl-3">
 
-                      {categoryCourses.map((course) => (
+                      {category.courses.map((course) => (
                         <Link
                           key={course.slug}
                           to={`/courses/${course.slug}`}
@@ -127,9 +110,7 @@ export default function CoursesMegaMenu({
                             hover:text-brand-blue
                           "
                         >
-                          {course.title ||
-                            course.name ||
-                            course.category}
+                          {course.name}
                         </Link>
                       ))}
 
@@ -172,10 +153,7 @@ export default function CoursesMegaMenu({
   return (
     <div className="group relative">
 
-      {/* =====================================================
-          MAIN COURSES BUTTON
-      ====================================================== */}
-
+      {/* Main Courses Button */}
       <button
         type="button"
         aria-haspopup="true"
@@ -199,10 +177,7 @@ export default function CoursesMegaMenu({
         />
       </button>
 
-      {/* =====================================================
-          FIRST DROPDOWN
-      ====================================================== */}
-
+      {/* First Dropdown - Categories */}
       <div
         className="
           invisible absolute left-1/2 top-full z-50
@@ -213,33 +188,25 @@ export default function CoursesMegaMenu({
           bg-white
           p-2
           shadow-xl
-
           opacity-0
-
           transition-all duration-150
-
           group-hover:visible
           group-hover:translate-y-0
           group-hover:opacity-100
-
           group-focus-within:visible
           group-focus-within:translate-y-0
           group-focus-within:opacity-100
         "
       >
 
-        {/* =================================================
-            CATEGORIES
-        ================================================== */}
-
-        {categories.map(([category, categoryCourses]) => (
+        {/* Categories */}
+        {categories.map((category) => (
           <div
-            key={category}
+            key={category.slug}
             className="group/category relative"
           >
 
-            {/* Category Item */}
-
+            {/* Category */}
             <div
               className="
                 flex items-center justify-between
@@ -253,7 +220,7 @@ export default function CoursesMegaMenu({
                 cursor-pointer
               "
             >
-              <span>{category}</span>
+              <span>{category.category}</span>
 
               <ChevronRight
                 size={15}
@@ -265,40 +232,27 @@ export default function CoursesMegaMenu({
               />
             </div>
 
-            {/* =================================================
-                SECOND DROPDOWN
-            ================================================== */}
-
+            {/* Second Dropdown - Courses */}
             <div
               className="
                 invisible
-
                 absolute
                 left-full
                 top-0
-
                 ml-1
-
-                w-60
-
+                w-64
                 rounded-xl
                 border border-slate-200
                 bg-white
-
                 p-2
-
                 shadow-xl
-
                 opacity-0
                 translate-x-1
-
                 transition-all
                 duration-150
-
                 group-hover/category:visible
                 group-hover/category:translate-x-0
                 group-hover/category:opacity-100
-
                 group-focus-within/category:visible
                 group-focus-within/category:translate-x-0
                 group-focus-within/category:opacity-100
@@ -306,18 +260,14 @@ export default function CoursesMegaMenu({
             >
 
               {/* Category Heading */}
-
               <div className="px-3.5 pb-2 pt-1">
-
                 <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">
-                  {category}
+                  {category.category}
                 </p>
-
               </div>
 
               {/* Courses */}
-
-              {categoryCourses.map((course) => (
+              {category.courses.map((course) => (
                 <Link
                   key={course.slug}
                   to={`/courses/${course.slug}`}
@@ -333,18 +283,12 @@ export default function CoursesMegaMenu({
                     hover:text-brand-blue
                   "
                 >
-
-                  <span>
-                    {course.title ||
-                      course.name ||
-                      course.category}
-                  </span>
+                  <span>{course.name}</span>
 
                   <ChevronRight
                     size={14}
                     className="text-slate-300"
                   />
-
                 </Link>
               ))}
 
@@ -352,16 +296,10 @@ export default function CoursesMegaMenu({
           </div>
         ))}
 
-        {/* =================================================
-            DIVIDER
-        ================================================== */}
-
+        {/* Divider */}
         <div className="my-1 border-t border-slate-100" />
 
-        {/* =================================================
-            VIEW ALL
-        ================================================== */}
-
+        {/* View All */}
         <Link
           to="/courses"
           onClick={onNavigate}

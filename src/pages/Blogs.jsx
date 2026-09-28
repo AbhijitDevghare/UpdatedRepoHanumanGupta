@@ -11,7 +11,6 @@ import { Link } from "react-router-dom";
 
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-
 import { blogs } from "../data/blogs";
 import { internalVisuals } from "../data/internalVisuals";
 
@@ -41,48 +40,69 @@ export default function Blogs() {
         ================================================= */}
 
         <section
-          className="relative overflow-hidden border-b border-blue-100 bg-white"
+          className="
+            relative overflow-hidden
+            border-b border-blue-100
+            bg-white
+          "
           style={{
             backgroundImage: `
               linear-gradient(
                 to right,
-                rgba(37, 99, 235, 0.08) 1px,
+                rgba(37, 99, 235, 0.06) 1px,
                 transparent 1px
               ),
               linear-gradient(
                 to bottom,
-                rgba(37, 99, 235, 0.08) 1px,
+                rgba(37, 99, 235, 0.06) 1px,
                 transparent 1px
               )
             `,
             backgroundSize: "50px 50px",
           }}
         >
+          <div className="absolute inset-0 bg-white/30" />
 
-          {/* Soft overlay */}
-
-          <div className="absolute inset-0 bg-white/20" />
-
-          <div className="relative mx-auto max-w-6xl px-4 py-12 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
-
+          <div
+            className="
+              relative mx-auto max-w-6xl
+              px-4 py-12
+              sm:px-6 sm:py-14
+              lg:px-8 lg:py-16
+            "
+          >
             <div className="mx-auto max-w-4xl text-center">
 
-              <h1 className="text-4xl font-bold leading-tight tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
+              <h1
+                className="
+                  text-4xl font-bold
+                  leading-tight tracking-tight
+                  text-brand-navy
+                  sm:text-5xl
+                  lg:text-6xl
+                "
+              >
                 Technical ideas for
-                <span className="block text-blue-700">
+                <span className="block text-brand-blue">
                   practical learning.
                 </span>
               </h1>
 
-              <p className="mx-auto mt-5 max-w-3xl text-base leading-7 text-slate-600 sm:text-lg">
-                Short, focused notes on virtual labs, technology learning
-                paths, and the systems behind modern IT work.
+              <p
+                className="
+                  mx-auto mt-5
+                  max-w-3xl
+                  text-base leading-7
+                  text-slate-600
+                  sm:text-lg
+                "
+              >
+                Short, focused notes on virtual labs, technology
+                learning paths, and the systems behind modern IT work.
               </p>
 
             </div>
-
           </div>
-
         </section>
 
         {/* =================================================
@@ -90,50 +110,83 @@ export default function Blogs() {
         ================================================= */}
 
         <section className="border-b border-slate-200 bg-white py-14 sm:py-16">
-
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
-            <div className="grid grid-cols-1 overflow-hidden rounded-2xl border border-slate-200 bg-brand-navy shadow-xl lg:grid-cols-2">
+            <div
+              className="
+                grid grid-cols-1
+                overflow-hidden
+                rounded-2xl
+                border border-slate-200
+                bg-brand-navy
+                shadow-lg
+                lg:grid-cols-2
+              "
+            >
 
-              {/* FEATURED IMAGE */}
+              {/* IMAGE */}
 
               <div className="relative min-h-72">
 
                 <img
                   src={internalVisuals.blogs[0]}
                   alt="Technical learning on a laptop"
-                  className="h-full w-full object-cover opacity-75"
+                  className="
+                    h-full w-full
+                    object-cover
+                    opacity-75
+                  "
                 />
 
-                <div className="absolute inset-0 bg-gradient-to-r from-brand-navy/80 via-transparent to-transparent" />
+                <div
+                  className="
+                    absolute inset-0
+                    bg-gradient-to-r
+                    from-brand-navy/80
+                    via-brand-navy/20
+                    to-transparent
+                  "
+                />
 
               </div>
 
-              {/* FEATURED CONTENT */}
+              {/* CONTENT */}
 
               <div className="flex flex-col justify-center p-8 text-white sm:p-10">
 
-                <span className="text-xs font-mono uppercase tracking-wider text-cyan-300">
+                <span className="text-xs font-semibold text-blue-200">
                   {featured.date}
                 </span>
 
-                <h2 className="mt-3 text-3xl font-extrabold">
+                <h2 className="mt-3 text-3xl font-extrabold leading-tight text-white">
                   {featured.title}
                 </h2>
 
-                <p className="mt-4 leading-relaxed text-slate-300">
+                <p className="mt-4 leading-7 text-blue-100">
                   {featured.excerpt}
                 </p>
 
                 <Link
                   to={`/blogs/${featured.slug}`}
-                  className="mt-7 inline-flex items-center self-start text-sm font-semibold text-cyan-200 transition hover:text-white"
+                  className="
+                    group mt-7
+                    inline-flex items-center
+                    self-start
+                    text-sm font-semibold
+                    text-blue-200
+                    transition-colors
+                    hover:text-white
+                  "
                 >
                   Read featured article
 
                   <ArrowRight
                     size={16}
-                    className="ml-2 transition-transform group-hover:translate-x-1"
+                    className="
+                      ml-2
+                      transition-transform
+                      group-hover:translate-x-1
+                    "
                   />
                 </Link>
 
@@ -142,7 +195,6 @@ export default function Blogs() {
             </div>
 
           </div>
-
         </section>
 
         {/* =================================================
@@ -150,17 +202,14 @@ export default function Blogs() {
         ================================================= */}
 
         <section className="border-b border-slate-200 bg-slate-50 py-14 sm:py-16">
-
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
             <div className="flex flex-wrap items-center justify-between gap-4">
 
               <div>
-
                 <h2 className="text-3xl font-extrabold text-brand-navy">
                   Recent articles
                 </h2>
-
               </div>
 
               {/* CATEGORY FILTER */}
@@ -168,13 +217,14 @@ export default function Blogs() {
               <div className="flex flex-wrap gap-2">
 
                 {categories.map((item) => (
-
                   <button
                     key={item}
                     type="button"
                     onClick={() => setCategory(item)}
                     className={`
-                      rounded-lg px-4 py-2 text-sm font-semibold
+                      rounded-lg
+                      px-4 py-2
+                      text-sm font-semibold
                       transition-colors
                       ${
                         category === item
@@ -185,7 +235,6 @@ export default function Blogs() {
                   >
                     {item}
                   </button>
-
                 ))}
 
               </div>
@@ -200,7 +249,16 @@ export default function Blogs() {
 
                 <article
                   key={blog.slug}
-                  className="group overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition-shadow hover:shadow-md"
+                  className="
+                    group
+                    overflow-hidden
+                    rounded-xl
+                    border border-slate-200
+                    bg-white
+                    shadow-sm
+                    transition-shadow
+                    hover:shadow-md
+                  "
                 >
 
                   {/* IMAGE */}
@@ -215,10 +273,25 @@ export default function Blogs() {
                       }
                       alt={blog.title}
                       loading="lazy"
-                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="
+                        h-full w-full
+                        object-cover
+                        transition-transform
+                        duration-500
+                        group-hover:scale-105
+                      "
                     />
 
-                    <span className="absolute bottom-4 left-4 rounded bg-brand-navy/80 px-3 py-1 text-xs font-mono text-cyan-200">
+                    <span
+                      className="
+                        absolute bottom-4 left-4
+                        rounded
+                        bg-brand-navy/85
+                        px-3 py-1
+                        text-xs font-semibold
+                        text-blue-100
+                      "
+                    >
                       {index === 0
                         ? "VIRTUAL LABS"
                         : "LEARNING PATHS"}
@@ -230,12 +303,9 @@ export default function Blogs() {
 
                   <div className="p-6">
 
-                    <div className="flex items-center gap-2 text-xs text-slate-400">
-
+                    <div className="flex items-center gap-2 text-xs text-slate-500">
                       <CalendarDays size={14} />
-
                       {blog.date}
-
                     </div>
 
                     <h3 className="mt-3 text-xl font-bold text-brand-navy">
@@ -248,7 +318,14 @@ export default function Blogs() {
 
                     <Link
                       to={`/blogs/${blog.slug}`}
-                      className="mt-5 inline-flex items-center text-sm font-semibold text-brand-blue transition hover:text-blue-800"
+                      className="
+                        mt-5
+                        inline-flex items-center
+                        text-sm font-semibold
+                        text-brand-blue
+                        transition-colors
+                        hover:text-blue-800
+                      "
                     >
                       Read article
 
@@ -267,7 +344,6 @@ export default function Blogs() {
             </div>
 
           </div>
-
         </section>
 
         {/* =================================================
@@ -275,15 +351,20 @@ export default function Blogs() {
         ================================================= */}
 
         <section className="bg-white py-14 sm:py-16">
-
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 
             <div className="flex items-center gap-3">
 
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg border border-blue-100 text-brand-blue">
-
+              <div
+                className="
+                  flex h-10 w-10
+                  items-center justify-center
+                  rounded-lg
+                  border border-blue-100
+                  text-brand-blue
+                "
+              >
                 <Layers3 size={20} />
-
               </div>
 
               <h2 className="text-2xl font-extrabold text-brand-navy">
@@ -304,7 +385,14 @@ export default function Blogs() {
 
                 <span
                   key={topic}
-                  className="rounded-lg border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-700"
+                  className="
+                    rounded-lg
+                    border border-slate-200
+                    bg-slate-50
+                    px-4 py-3
+                    text-sm font-semibold
+                    text-slate-700
+                  "
                 >
                   <BookOpen
                     size={15}
@@ -312,7 +400,6 @@ export default function Blogs() {
                   />
 
                   {topic}
-
                 </span>
 
               ))}
@@ -320,7 +407,6 @@ export default function Blogs() {
             </div>
 
           </div>
-
         </section>
 
       </main>
